@@ -1,5 +1,5 @@
 import { Sprite } from 'pixi.js';
-import Tileset from './tileset.old';
+import Map from './map';
 
 const FLIPPED_HORIZONTALLY_FLAG = 0x8000_0000;
 const FLIPPED_VERTICALLY_FLAG = 0x4000_0000;
@@ -16,15 +16,14 @@ export default class TileSprite extends Sprite {
 
     /**
      * Creates a new tile sprite.
-     * @param tileset The tileset to use (temporary, should use a tilesets system).
+     * @param map The map which the tile belongs to.
      * @param rawTileId The raw id of the tile, including the flipping bits.
      */
-    constructor(private tileset: Tileset, rawTileId: number) {
+    constructor(private map: Map, rawTileId: number) {
         super();
 
         this.anchor.set(0.5, 0.5);
         this.rawTileId = rawTileId;
-        this.angle
     }
 
     /**
@@ -34,7 +33,7 @@ export default class TileSprite extends Sprite {
     set tileId(value: number) {
         if (value <= 0) throw new Error('tileId must be a positive integer');
         this._tileId = value;
-        this.texture = this.tileset.textures[value - 1];
+        this.texture = this.map.textures[value];
     }
 
     /**
