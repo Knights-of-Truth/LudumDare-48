@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js';
+import { Texture } from 'pixi.js';
 import * as Tiled from '../tiled';
 
 import { Tileset } from './tileset';
@@ -35,10 +35,23 @@ export class Map {
      * The map's custom properties.
      */
     public readonly properties: Record<string, Tiled.Property | undefined> = {};
+
     /**
      * The map's loaded tilesets.
      */
     public readonly tilesets: Tileset[] = [];
+    /**
+     * A record storing the textures of tiles in the tilesets.
+     * - Keys: The tile's global id (GID).
+     * - Values: The tile's loaded texture.
+     */
+    public readonly textures: Record<number, Texture> = [];
+    /**
+     * A record storing any metadata available for a tile.
+     * - Keys: The tile's global id (GID).
+     * - Values: The tile's metadata, undefiend when there's no data.
+     */
+    public readonly tiles: Record<number, Tiled.Tile | undefined> = {};
 
     /**
      * Load and create a new map instance.
@@ -91,11 +104,21 @@ export class Map {
         if (properties !== undefined)
             for (const property of properties) this.properties[property.name] = property;
 
-        //TODO: tilesets and layers.
-        if (tilesets !== undefined)
-            for (const tileset of tilesets)
-                this.tilesets.push(new Tileset(this, tileset, resources));
+        if (tilesets !== undefined) {
+            for (const tilesetData of tilesets) {
+                const tileset = new Tileset(this, tilesetData, resources);
+                this.tilesets.push(tileset);
 
+                // Copy the tile's textures and metadata.
+                tileset.textures.forEach((texture, localId) => {
+                    this.textures[tileset.firstGID + localId] = texture;
+                    const metadata = tileset.tiles[localId];
+                    if (metadata !== undefined) this.tiles[tileset.firstGID + localId] = metadata;
+                });
+            }
+        }
+
+        //TODO: layers.
     }
 
     /**
