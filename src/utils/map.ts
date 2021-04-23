@@ -9,7 +9,7 @@ import { Tileset } from './tileset';
  */
 type Resources = Record<string, any>;
 
-export class Map {
+export default class Map {
     /**
      * The width of the map in tiles.
      */
