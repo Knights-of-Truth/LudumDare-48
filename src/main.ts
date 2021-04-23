@@ -29,6 +29,8 @@ async function main() {
     console.log('Loaded resources', resources);
 
     const map = new Map(resources, 'maps/playground.json');
+
+    console.debug('map', map);
 }
 
 main().catch(console.error);
