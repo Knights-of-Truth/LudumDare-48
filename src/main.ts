@@ -7,7 +7,7 @@ import { getResources } from './assets';
 // import LinearObjectGroup from './utils/linear-objectgroup';
 // import * as Tiled from './tiled';
 
-import { Map } from './utils/map';
+import Map from './utils/map';
 
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
@@ -29,6 +29,7 @@ async function main() {
     console.log('Loaded resources', resources);
 
     const map = new Map(resources, 'maps/playground.json');
+    stage.addChild(map.container);
 
     console.debug('map', map);
 }

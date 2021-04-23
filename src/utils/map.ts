@@ -1,7 +1,8 @@
-import { Texture } from 'pixi.js';
+import * as PIXI from 'pixi.js';
 import * as Tiled from '../tiled';
 
-import { Tileset } from './tileset';
+import Tileset from './tileset';
+import GridTileLayer from './grid-tilelayer';
 
 /**
  * A container of loaded resources, with keys being path names,
@@ -10,6 +11,8 @@ import { Tileset } from './tileset';
 type Resources = Record<string, any>;
 
 export default class Map {
+    public readonly container = new PIXI.Container();
+
     /**
      * The width of the map in tiles.
      */
@@ -45,7 +48,7 @@ export default class Map {
      * - Keys: The tile's global id (GID).
      * - Values: The tile's loaded texture.
      */
-    public readonly textures: Record<number, Texture> = [];
+    public readonly textures: Record<number, PIXI.Texture> = [];
     /**
      * A record storing any metadata available for a tile.
      * - Keys: The tile's global id (GID).
@@ -119,6 +122,14 @@ export default class Map {
         }
 
         //TODO: layers.
+        for (const layer of layers) {
+            if (layer.type === 'tilelayer') {
+                const tileLayer = new GridTileLayer(this, layer);
+                this.container.addChild(tileLayer.container);
+            } else {
+                throw new Error(`Layers of type ${layer.type} are not supported yet!`);
+            }
+        }
     }
 
     /**
