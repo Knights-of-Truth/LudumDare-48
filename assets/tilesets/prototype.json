@@ -1,0 +1,82 @@
+{ "columns":32,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"prototype.json"
+        }
+    },
+ "image":"prototype.png",
+ "imageheight":256,
+ "imagewidth":256,
+ "margin":0,
+ "name":"Prototype",
+ "objectalignment":"center",
+ "spacing":0,
+ "terrains":[
+        {
+         "name":"Matter",
+         "tile":100
+        }],
+ "tilecount":1024,
+ "tiledversion":"1.4.3",
+ "tileheight":8,
+ "tiles":[
+        {
+         "id":1,
+         "terrain":[-1, -1, -1, 0]
+        }, 
+        {
+         "id":2,
+         "terrain":[-1, -1, 0, 0]
+        }, 
+        {
+         "id":3,
+         "terrain":[-1, -1, 0, -1]
+        }, 
+        {
+         "id":4,
+         "terrain":[0, 0, 0, -1]
+        }, 
+        {
+         "id":5,
+         "terrain":[0, 0, -1, 0]
+        }, 
+        {
+         "id":33,
+         "terrain":[-1, 0, -1, 0]
+        }, 
+        {
+         "id":34,
+         "terrain":[0, 0, 0, 0],
+         "type":"crate"
+        }, 
+        {
+         "id":35,
+         "terrain":[0, -1, 0, -1]
+        }, 
+        {
+         "id":36,
+         "terrain":[0, -1, 0, 0]
+        }, 
+        {
+         "id":37,
+         "terrain":[-1, 0, 0, 0]
+        }, 
+        {
+         "id":65,
+         "terrain":[-1, 0, -1, -1]
+        }, 
+        {
+         "id":66,
+         "terrain":[0, 0, -1, -1]
+        }, 
+        {
+         "id":67,
+         "terrain":[0, -1, -1, -1]
+        }],
+ "tilewidth":8,
+ "type":"tileset",
+ "version":1.4
+}
