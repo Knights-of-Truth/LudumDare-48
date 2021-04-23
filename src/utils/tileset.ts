@@ -16,7 +16,7 @@ type Resources = Record<string, any>;
  * Contains the textures for each tile, sharing the same BaseTexture (so they don't hit the GPU).
  * And the metadata available for each tile, so advanced game logic can be written.
  */
-export class Tileset {
+export default class Tileset {
     /**
      * The path of the tileset data (can be a map file path).
      */
