@@ -6,6 +6,7 @@
  <transformations hflip="1" vflip="1" rotate="1" preferuntransformed="1"/>
  <image source="prototype.png" width="256" height="256"/>
  <tile id="34" type="crate"/>
+ <tile id="64" type="Player"/>
  <wangsets>
   <wangset name="Terrains" type="corner" tile="-1">
    <wangcolor name="Matter" color="#ff0000" tile="100" probability="1"/>

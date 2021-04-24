@@ -4,6 +4,7 @@ import { getResources } from './assets';
 import Map from './utils/map';
 import Tile from './utils/tile';
 import Player from './entities/player';
+import StandardKeyboardControls from './utils/standard-keyboard-controls';
 
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
@@ -37,6 +38,7 @@ function spawnPlayer(map: Map) {
     if (playerTile === null) return console.warn("Can't find a player tile.");
 
     const player = new Player(playerTile);
+    new StandardKeyboardControls(player.move.bind(player));
 
     console.debug('PLAYER', player);
 }
