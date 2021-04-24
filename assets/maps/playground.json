@@ -60,7 +60,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/tilesets\/prototype.tsx"
+         "source":"..\/tilesets\/prototype.json"
         }],
  "tilewidth":8,
  "type":"map",
