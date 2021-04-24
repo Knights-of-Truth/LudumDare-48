@@ -13,6 +13,7 @@
     "watch": "webpack --watch"
   },
   "devDependencies": {
+    "directory-tree-webpack-plugin": "^1.0.2",
     "ts-loader": "^8.0.18",
     "typescript": "^4.2.3",
     "webpack": "^5.27.1",
