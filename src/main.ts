@@ -39,8 +39,6 @@ function spawnPlayer(map: Map) {
 
     const player = new Player(playerTile);
     new StandardKeyboardControls(player.move.bind(player));
-
-    console.debug('PLAYER', player);
 }
 
 async function main() {
