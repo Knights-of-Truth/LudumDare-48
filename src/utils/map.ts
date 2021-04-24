@@ -53,6 +53,10 @@ export default class Map extends PIXI.Container {
      * - Values: The tile's metadata, undefiend when there's no data.
      */
     public readonly tilesMetadata: Record<number, Readonly<Tiled.Tile> | undefined> = {};
+    /**
+     * The map's loaded layers.
+     */
+    public readonly layers: GridTileLayer[] = [];
 
     /**
      * Load and create a new map instance.
@@ -128,9 +132,9 @@ export default class Map extends PIXI.Container {
         // Load the layers.
         for (const layer of layers) {
             if (layer.type === 'tilelayer') {
-                // TODO: Store the layers in a unified array.
                 const tileLayer = new GridTileLayer(this, layer);
                 this.addChild(tileLayer);
+                this.layers.push(tileLayer);
             } else {
                 // TODO: Support layers types other than tile layers.
                 console.warn(`Layer #${layer.id} '${layer.name}' has been ignored because it's not supported!\n(Only tile layers are supported)`);
