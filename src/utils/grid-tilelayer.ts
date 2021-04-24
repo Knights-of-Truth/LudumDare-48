@@ -155,13 +155,13 @@ export default class GridTileLayer extends PIXI.Container {
         for (const property of (properties ?? []))
             this.properties[property.name] = property;
 
+        // Construct the 2-dimensional tiles array.
+        for (let x = 0; x < width; x++) this.tiles[x] = [];
+
         // Construct the tiles.
         for (let y = 0; y < height; y++) {
-            const column: Tile[] = [];
-            this.tiles[y] = column;
-
             for (let x = 0; x < width; x++)
-                column[x] = new GridTile(this, x, y, data[x + y * width]);
+                this.tiles[x][y] = new GridTile(this, x, y, data[x + y * width]);
         }
 
         // Apply the cache property.
