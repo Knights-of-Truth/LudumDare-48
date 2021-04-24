@@ -1,12 +1,6 @@
 import * as PIXI from 'pixi.js';
 
 import { getResources } from './assets';
-
-// import Tileset from './utils/tileset.old';
-// import LinearTileLayer from './utils/linear-tilelayer';
-// import LinearObjectGroup from './utils/linear-objectgroup';
-// import * as Tiled from './tiled';
-
 import Map from './utils/map';
 
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
