@@ -161,7 +161,7 @@ export default class GridTileLayer extends PIXI.Container {
             this.tiles[y] = column;
 
             for (let x = 0; x < width; x++)
-                column[y] = new GridTile(this, x, y, data[x + y * width]);
+                column[x] = new GridTile(this, x, y, data[x + y * width]);
         }
 
         // Apply the cache property.
