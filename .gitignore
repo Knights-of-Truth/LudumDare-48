@@ -1,3 +1,6 @@
+# Portotype assets
+assets/**/proto.*
+
 # Gimp
 *.xcf
 
@@ -5,8 +8,8 @@
 *.tiled-session
 
 # Node
-node_modules
+node_modules/
 
 # Build
 src/assets.json
-dist
+dist/
