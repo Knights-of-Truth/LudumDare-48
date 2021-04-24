@@ -30,7 +30,7 @@ module.exports = {
         new DirectoryTreePlugin({
             dir: './assets',
             path: './src/assets.json',
-            extensions: /\.(json|png|jpg)$/i,
+            extensions: /\.(json|png|jpg|bmp)$/i,
         })
     ],
 }
