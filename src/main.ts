@@ -24,14 +24,11 @@ const stage = app.stage;
 stage.scale.set(8);
 
 async function main() {
-    console.log('Loading resources...');
     const resources = await getResources();
-    console.log('Loaded resources', resources);
+    console.log('Loaded resources successfully ✔');
 
     const map = new Map(resources, 'maps/playground.json');
     stage.addChild(map.container);
-
-    console.debug('map', map);
 }
 
 main().catch(console.error);
