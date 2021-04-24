@@ -1,3 +1,6 @@
+# Gimp
+*.xcf
+
 # Node
 node_modules
 
