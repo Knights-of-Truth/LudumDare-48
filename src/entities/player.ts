@@ -2,7 +2,9 @@ import Tile from '../utils/tile';
 import Direction from '../utils/direction';
 
 export default class Player {
-    constructor(private tile: Tile) { }
+    public onMove = () => {};
+
+    constructor(public tile: Tile) { }
 
     private getTargetTile(direction: Direction): Tile | undefined {
         const {
@@ -31,5 +33,7 @@ export default class Player {
         targetTile.rawTileId = this.tile.rawTileId;
         this.tile.rawTileId = targetRawId;
         this.tile = targetTile;
+
+        this.onMove();
     }
 }

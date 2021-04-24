@@ -12,13 +12,18 @@ let keyboardBindings: {[keyName: string]: Direction} = {
     a: Direction.LEFT, A: Direction.LEFT
 }
 
-export default class StandardKeyboardControls {
-    constructor(public onInput: (direction: Direction) => void) {
+export default class KeyboardHandler {
+    /**
+     * A callback to be triggered when a direction button is pressed.
+     */
+    public onDirection: (direction: Direction) => void = () => {};
+
+    constructor() {
         document.addEventListener("keydown", this.onkeydown.bind(this));
     }
 
     onkeydown(ev: KeyboardEvent) {
         if (ev.key in keyboardBindings)
-            this.onInput(keyboardBindings[ev.key]);
+            this.onDirection(keyboardBindings[ev.key]);
     }
 }
