@@ -5,6 +5,8 @@ import Map from './map';
 import Tile from './tile';
 import TileSprite from './tile-sprite';
 
+import * as Utils from '../lib/utils';
+
 /**
  * Represents a tile in the GridTileLayer, supporting the tileId of 0.
  * 
@@ -165,11 +167,8 @@ export default class GridTileLayer extends PIXI.Container {
         }
 
         // Apply the cache property.
-        const cacheProperty = this.properties['Cache'];
-        if (cacheProperty !== undefined) {
-            if (cacheProperty.type === 'bool') this.cacheAsBitmap = cacheProperty.value;
-            else console.warn(`The 'Cache' tile layer property is set as ${cacheProperty.type}, it should be a boolean!`);
-        }
+        const cacheProperty = Utils.getProperty(this.properties, 'Cache', 'bool');
+        if (cacheProperty !== undefined) this.cacheAsBitmap = cacheProperty;
     }
 
     /**

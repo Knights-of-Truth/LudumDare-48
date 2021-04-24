@@ -39,6 +39,11 @@
                  "name":"Cache",
                  "type":"bool",
                  "value":true
+                }, 
+                {
+                 "name":"Solid",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,

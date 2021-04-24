@@ -14,11 +14,15 @@ export default class Game {
     public readonly stage = new PIXI.Container();
     public readonly map: Map;
 
+    private readonly solid: boolean[][] = [];
+
     constructor(resources: Resources) {
         this.map = new Map(resources, 'maps/playground.json');
         this.stage.addChild(this.map);
 
-        const player = Game.findAndConstructPlayer(this.map);
+        this.updateSolid();
+
+        const player = Game.findAndConstructPlayer(this.map, this.solid);
         if (!player) throw new Error("Can't find the player!");
 
         const focusOnPlayer = () => this.focusOnTile(player.tile);
@@ -27,6 +31,25 @@ export default class Game {
         this.keyboardHandler.onDirection = player.move.bind(player);
 
         focusOnPlayer();
+    }
+
+    private updateSolid() {
+        const { layers, mapWidth, mapHeight } = this.map;
+
+        // Clear the existing data.
+        this.solid.length = 0;
+
+        // Create the columns.
+        for (let x = 0; x < mapWidth; x++) this.solid[x] = [];
+
+        // Scan the layers.
+        for (const layer of layers) {
+            if (!Utils.getProperty(layer.properties, 'Solid', 'bool')) continue;
+            for (let x = 0; x < mapWidth; x++)
+                for (let y = 0; y < mapHeight; y++)
+                    if (layer.tiles[x][y].tileId !== 0)
+                        this.solid[x][y] = true;
+        }
     }
 
     /**
@@ -47,9 +70,9 @@ export default class Game {
      * @param map The map to search for the player in.
      * @returns The constructed player.
      */
-    static findAndConstructPlayer(map: Map) {
+    static findAndConstructPlayer(map: Map, solid: boolean[][]) {
         const playerTile = Game.findFirstPlayerTile(map);
-        return playerTile ? new Player(playerTile) : null;
+        return playerTile ? new Player(playerTile, solid) : null;
     }
 
     /**
