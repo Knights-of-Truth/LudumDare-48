@@ -27,8 +27,9 @@ export default class Player {
         const targetTile = this.getTargetTile(direction);
         if (!targetTile) return ;
 
-        targetTile.tileId = this.tile.tileId;
-        this.tile.rawTileId = 0;
+        const targetRawId = targetTile.rawTileId;
+        targetTile.rawTileId = this.tile.rawTileId;
+        this.tile.rawTileId = targetRawId;
         this.tile = targetTile;
     }
 }
