@@ -28,7 +28,7 @@ async function main() {
     console.log('Loaded resources successfully ✔');
 
     const map = new Map(resources, 'maps/playground.json');
-    stage.addChild(map.container);
+    stage.addChild(map);
 }
 
 main().catch(console.error);

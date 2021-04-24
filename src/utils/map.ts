@@ -10,17 +10,15 @@ import GridTileLayer from './grid-tilelayer';
  */
 type Resources = Record<string, any>;
 
-export default class Map {
-    public readonly container = new PIXI.Container();
-
+export default class Map extends PIXI.Container {
     /**
      * The width of the map in tiles.
      */
-    public readonly width: number;
+    public readonly mapWidth: number;
     /**
      * The height of the map in tiles.
      */
-    public readonly height: number;
+    public readonly mapHeight: number;
     /**
      * The width of a single tile in pixels.
      */
@@ -37,7 +35,7 @@ export default class Map {
     /**
      * The map's custom properties.
      */
-    public readonly properties: Record<string, Tiled.Property | undefined> = {};
+    public readonly properties: Record<string, Readonly<Tiled.Property> | undefined> = {};
 
     /**
      * The map's loaded tilesets.
@@ -54,7 +52,7 @@ export default class Map {
      * - Keys: The tile's global id (GID).
      * - Values: The tile's metadata, undefiend when there's no data.
      */
-    public readonly tiles: Record<number, Tiled.Tile | undefined> = {};
+    public readonly tilesMetadata: Record<number, Readonly<Tiled.Tile> | undefined> = {};
 
     /**
      * Load and create a new map instance.
@@ -69,6 +67,8 @@ export default class Map {
         resources: Resources,
         public readonly path: string
     ) {
+        super();
+
         const data = Map.resolveMapData(resources, path);
 
         //TODO: Support 'backgroundcolor'
@@ -91,22 +91,26 @@ export default class Map {
 
         if (type !== 'map') throw new Error(`Invalid map data type: ${type}`);
 
+        // TODO: Support non-orthogonal maps.
         if (orientation !== 'orthogonal')
             throw new Error(`Only orthogonal maps are supported at the moment, attempted to load a ${orientation} map`);
+        // TODO: Support non-right-down rendering.
         if (renderorder !== 'right-down')
             throw new Error(`Only right-down rendered maps are supported at the moment, attempted to load a ${renderorder} rended map`);
 
-        this.width = width;
-        this.height = height;
+        this.mapWidth = width;
+        this.mapHeight = height;
 
         this.tileWidth = tilewidth;
         this.tileHeight = tileheight;
 
         this.infinite = infinite;
 
+        // Copy the properties
         if (properties !== undefined)
             for (const property of properties) this.properties[property.name] = property;
 
+        // Load the tilesets, tiles textures and the tiles metadata.
         if (tilesets !== undefined) {
             for (const tilesetData of tilesets) {
                 const tileset = new Tileset(this, tilesetData, resources);
@@ -116,17 +120,17 @@ export default class Map {
                 tileset.textures.forEach((texture, localId) => {
                     this.textures[tileset.firstGID + localId] = texture;
                     const metadata = tileset.tiles[localId];
-                    if (metadata !== undefined) this.tiles[tileset.firstGID + localId] = metadata;
+                    if (metadata !== undefined) this.tilesMetadata[tileset.firstGID + localId] = metadata;
                 });
             }
         }
 
-        //TODO: layers.
+        // Load the layers.
         for (const layer of layers) {
             if (layer.type === 'tilelayer') {
                 // TODO: Store the layers in a unified array.
                 const tileLayer = new GridTileLayer(this, layer);
-                this.container.addChild(tileLayer);
+                this.addChild(tileLayer);
             } else {
                 // TODO: Support layers types other than tile layers.
                 console.warn(`Layer #${layer.id} '${layer.name}' has been ignored because it's not supported!\n(Only tile layers are supported)`);
