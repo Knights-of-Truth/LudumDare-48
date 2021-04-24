@@ -17,7 +17,10 @@ export default class Game {
     private readonly solid: boolean[][] = [];
 
     constructor(resources: Resources) {
-        this.map = new Map(resources, 'maps/playground.json');
+        const urlMap = document.location.hash;
+        const mapPath = urlMap.startsWith('#') ? `maps/${urlMap.substring(1)}.json` : 'maps/playground.json';
+
+        this.map = new Map(resources, mapPath);
         this.stage.addChild(this.map);
 
         this.updateSolid();
