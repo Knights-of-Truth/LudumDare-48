@@ -1,5 +1,4 @@
-import Map from '../engine/map';
-import Tile from '../engine/tile';
+import { Map, Tile } from '../engine';
 
 /**
  * Searches the tiles metadata of a map for tiles with a specific type.

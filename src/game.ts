@@ -3,8 +3,7 @@ import * as PIXI from 'pixi.js';
 import * as Utils from './lib/utils';
 import KeyboardHandler from './lib/keyboard-handler';
 
-import Map from './engine/map';
-import Tile from './engine/tile';
+import { Map, Tile } from './engine';
 
 import Player from './entities/player';
 
@@ -18,7 +17,7 @@ export default class Game {
     constructor(resources: Resources) {
         this.map = new Map(resources, 'maps/playground.json');
         this.stage.addChild(this.map);
-        
+
         const player = Game.findAndConstructPlayer(this.map);
         if (!player) throw new Error("Can't find the player!");
 
