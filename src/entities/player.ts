@@ -1,5 +1,5 @@
-import Tile from '../utils/tile';
-import Direction from '../utils/direction';
+import Tile from '../engine/tile';
+import Direction from '../lib/direction';
 
 export default class Player {
     public onMove = () => {};

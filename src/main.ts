@@ -15,17 +15,6 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view);
 
 const stage = app.stage;
-stage.scale.set(8);
-
-function centerStage() {
-    stage.position.set(
-        Math.floor(app.screen.width / 2),
-        Math.floor(app.screen.height / 2)
-    );
-}
-
-window.addEventListener('resize', centerStage);
-centerStage();
 
 async function main() {
     const resources = await getResources();
@@ -33,6 +22,18 @@ async function main() {
 
     const game = new Game(resources);
     stage.addChild(game.stage);
+
+    game.stage.scale.set(4);
+
+    function centerMapStage() {
+        game.stage.position.set(
+            Math.floor(app.screen.width / 2),
+            Math.floor(app.screen.height / 2)
+        );
+    }
+    
+    window.addEventListener('resize', centerMapStage);
+    centerMapStage();
 }
 
 main().catch(console.error);

@@ -1,8 +1,10 @@
 import * as PIXI from 'pixi.js';
 
-import Map from './utils/map';
-import Tile from './utils/tile';
-import KeyboardHandler from './utils/keyboard-handler';
+import * as Utils from './lib/utils';
+import KeyboardHandler from './lib/keyboard-handler';
+
+import Map from './engine/map';
+import Tile from './engine/tile';
 
 import Player from './entities/player';
 
@@ -52,40 +54,6 @@ export default class Game {
     }
 
     /**
-     * Searches the tiles metadata of a map for tiles with a specific type.
-     * 
-     * @param map The map to search it's tiles metadata.
-     * @param type The tile type to match for.
-     * 
-     * @returns An array with the global ids of the tiles matching the requested type.
-     */
-    static getTilesWithType(map: Map, type: string) {
-        return Object.entries(map.tilesMetadata)
-            .reduce<number[]>((matchedTiles, [tileId, metadata]) => {
-                if (metadata?.type === type) matchedTiles.push(Number.parseInt(tileId));
-                return matchedTiles;
-            }, []);
-    }
-
-    /**
-     * Searches the map for the first tile matching a group of tileIds.
-     * 
-     * @param map The map to search it's tiles.
-     * @param tileIds A list of ids to match any of them.
-     * 
-     * @returns The first tile found, or null if not found.
-     */
-    static findFirstTileOfId(map: Map, tileIds: number[]) {
-        return map.layers.reduce<Tile | null>((mapTile, layer) =>
-            mapTile ?? layer.tiles.reduce<Tile | null>((layerTile, column) =>
-                layerTile ?? column.reduce<Tile | null>((columnTile, tile) =>
-                    columnTile ?? (tileIds.includes(tile.tileId) ? tile : null)
-                    , null)
-                , null)
-            , null);
-    }
-
-    /**
      * Searchs the map for the first player tile it can find.
      * A player tile is a tile whose metadata has the type 'Player'.
      * 
@@ -93,7 +61,7 @@ export default class Game {
      * @returns The first player tile found, or null if not found.
      */
     static findFirstPlayerTile(map: Map) {
-        const playerTileIds = Game.getTilesWithType(map, 'Player');
-        return Game.findFirstTileOfId(map, playerTileIds);
+        const playerTileIds = Utils.getTilesWithType(map, 'Player');
+        return Utils.findFirstTileOfId(map, playerTileIds);
     }
 }
