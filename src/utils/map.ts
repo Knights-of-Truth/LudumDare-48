@@ -128,7 +128,8 @@ export default class Map {
                 const tileLayer = new GridTileLayer(this, layer);
                 this.container.addChild(tileLayer);
             } else {
-                throw new Error('Only tile layers are currently supported!');
+                // TODO: Support layers types other than tile layers.
+                console.warn(`Layer #${layer.id} '${layer.name}' has been ignored because it's not supported!\n(Only tile layers are supported)`);
             }
         }
     }
