@@ -14,20 +14,21 @@ class GridTile implements Tile {
     public readonly isZeroSupported = true;
 
     protected tileSprite: TileSprite | null;
-    protected tilePosition: [number, number];
 
-    public constructor(public readonly tileLayer: GridTileLayer, x: number, y: number, rawTileId: number) {
-        this.tilePosition = [x, y];
+    public constructor(
+        public readonly tileLayer: GridTileLayer,
+        public readonly tileX: number,
+        public readonly tileY: number,
+        rawTileId: number
+    ) {
         if (rawTileId === 0) this.tileSprite = null;
         else this.tileSprite = this.createTileSprite(rawTileId);
     }
 
     private createTileSprite(rawTileId: number) {
         const { map, tint, opacity } = this.tileLayer;
-        const [x, y] = this.tilePosition;
 
-        const tileSprite = new TileSprite(map, rawTileId);
-        tileSprite.position.set((x + .5) * map.tileWidth, (y + .5) * map.tileHeight);
+        const tileSprite = new TileSprite(map, this.tileX, this.tileY, rawTileId);
 
         tileSprite.tint = tint;
         tileSprite.alpha = opacity;
@@ -142,13 +143,17 @@ export default class GridTileLayer extends PIXI.Container {
             throw new Error('base64 encoded layers are not supported yet!');
 
         // Set rendering options.
-        
+
         this.visible = visible;
         if (offsetx !== undefined && offsety !== undefined)
             this.pivot.set(-offsetx, -offsety);
 
         if (tintcolor !== undefined) this._tint = PIXI.utils.string2hex(tintcolor);
         this._opacity = opacity;
+
+        // Copy the properties into a readonly record.
+        for (const property of (properties ?? []))
+            this.properties[property.name] = property;
 
         // Construct the tiles.
         for (let y = 0; y < height; y++) {
@@ -159,10 +164,6 @@ export default class GridTileLayer extends PIXI.Container {
                 column[y] = new GridTile(this, x, y, data[x + y * width]);
         }
 
-        // Copy the properties into a readonly record.
-        for (const property of (properties ?? []))
-            this.properties[property.name] = property;
-        
         // Apply the cache property.
         const cacheProperty = this.properties['Cache'];
         if (cacheProperty !== undefined) {
@@ -191,7 +192,7 @@ export default class GridTileLayer extends PIXI.Container {
     public updateCachedBitmap() {
         // It's not cached, no need to update it.
         if (!this.cacheAsBitmap) return;
-        
+
         this.cacheAsBitmap = false;
         this.cacheAsBitmap = true;
     }

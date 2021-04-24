@@ -17,12 +17,20 @@ export default class TileSprite extends Sprite implements Tile {
     /**
      * Creates a new tile sprite.
      * @param map The map which the tile belongs to.
+     * @param tileX The X-coordinates of the tile in grid units.
+     * @param tileY The Y-coordinates of the tile in grid units.
      * @param rawTileId The raw id of the tile, including the flipping bits.
      */
-    constructor(private map: Map, rawTileId: number) {
+    constructor(
+        private map: Map,
+        public readonly tileX: number,
+        public readonly tileY: number,
+        rawTileId: number
+    ) {
         super();
 
         this.anchor.set(0.5, 0.5);
+        this.position.set((tileX + .5) * map.tileWidth, (tileY + .5) * map.tileHeight);
         this.rawTileId = rawTileId;
     }
 
