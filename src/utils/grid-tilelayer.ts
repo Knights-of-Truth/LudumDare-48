@@ -53,6 +53,8 @@ class GridTile implements Tile {
             if (existingTileSprite !== null) existingTileSprite.tileId = id;
             else this.tileSprite = this.createTileSprite(id);
         }
+
+        this.tileLayer.updateCachedBitmap();
     }
 
     get rawTileId() {
@@ -67,6 +69,8 @@ class GridTile implements Tile {
             if (existingTileSprite !== null) existingTileSprite.rawTileId = id;
             else this.tileSprite = this.createTileSprite(id);
         }
+
+        this.tileLayer.updateCachedBitmap();
     }
 
     get flippedHorizontally() {
@@ -75,7 +79,9 @@ class GridTile implements Tile {
     set flippedHorizontally(flipped: boolean) {
         const tileSprite = this.tileSprite;
         if (tileSprite === null) return;
+
         tileSprite.flippedHorizontally = flipped;
+        this.tileLayer.updateCachedBitmap();
     }
 
     get flippedVertically() {
@@ -84,7 +90,9 @@ class GridTile implements Tile {
     set flippedVertically(flipped: boolean) {
         const tileSprite = this.tileSprite;
         if (tileSprite === null) return;
+
         tileSprite.flippedVertically = flipped;
+        this.tileLayer.updateCachedBitmap();
     }
 
     get flippedDiagonally() {
@@ -93,7 +101,9 @@ class GridTile implements Tile {
     set flippedDiagonally(flipped: boolean) {
         const tileSprite = this.tileSprite;
         if (tileSprite === null) return;
+
         tileSprite.flippedDiagonally = flipped;
+        this.tileLayer.updateCachedBitmap();
     }
 }
 
@@ -106,6 +116,11 @@ export default class GridTileLayer extends PIXI.Container {
      * The tiles are instances of GridTile (an internal class), and so they support tileId of 0.
      */
     public readonly tiles: Tile[][] = [];
+
+    /**
+     * The properties of the layer, set in tiled.
+     */
+    public readonly properties: Record<string, Readonly<Tiled.Property> | undefined> = {};
 
     constructor(public readonly map: Map, tilelayer: Tiled.TileLayer) {
         super();
@@ -126,13 +141,16 @@ export default class GridTileLayer extends PIXI.Container {
         if (typeof data === 'string')
             throw new Error('base64 encoded layers are not supported yet!');
 
+        // Set rendering options.
+        
         this.visible = visible;
         if (offsetx !== undefined && offsety !== undefined)
             this.pivot.set(-offsetx, -offsety);
-        
+
         if (tintcolor !== undefined) this._tint = PIXI.utils.string2hex(tintcolor);
         this._opacity = opacity;
 
+        // Construct the tiles.
         for (let y = 0; y < height; y++) {
             const column: Tile[] = [];
             this.tiles[y] = column;
@@ -141,7 +159,16 @@ export default class GridTileLayer extends PIXI.Container {
                 column[y] = new GridTile(this, x, y, data[x + y * width]);
         }
 
-        // TODO: Support properties
+        // Copy the properties into a readonly record.
+        for (const property of (properties ?? []))
+            this.properties[property.name] = property;
+        
+        // Apply the cache property.
+        const cacheProperty = this.properties['Cache'];
+        if (cacheProperty !== undefined) {
+            if (cacheProperty.type === 'bool') this.cacheAsBitmap = cacheProperty.value;
+            else console.warn(`The 'Cache' tile layer property is set as ${cacheProperty.type}, it should be a boolean!`);
+        }
     }
 
     /**
@@ -156,5 +183,16 @@ export default class GridTileLayer extends PIXI.Container {
      */
     get opacity(): number {
         return this._opacity;
+    }
+
+    /**
+     * Updates the cached bitmap of the tilelayer, in-case it's enabled.
+     */
+    public updateCachedBitmap() {
+        // It's not cached, no need to update it.
+        if (!this.cacheAsBitmap) return;
+        
+        this.cacheAsBitmap = false;
+        this.cacheAsBitmap = true;
     }
 }
