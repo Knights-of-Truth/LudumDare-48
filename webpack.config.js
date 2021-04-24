@@ -1,4 +1,5 @@
 const path = require('path');
+const DirectoryTreePlugin = require('directory-tree-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -12,7 +13,7 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif|json)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
             }
         ],
@@ -25,4 +26,11 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new DirectoryTreePlugin({
+            dir: './assets',
+            path: './src/assets.json',
+            extensions: /\.(json|png|jpg)$/i,
+        })
+    ],
 }

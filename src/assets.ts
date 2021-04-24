@@ -1,17 +1,35 @@
+import path from 'path';
 import * as PIXI from 'pixi.js';
 
-/* ==-- Tilesets --== */
-import PrototypeTilesetData from '../assets/tilesets/prototype.json';
-import PrototypeTilesetImage from '../assets/tilesets/prototype.png';
+import assetsTree from './assets.json';
 
-/* ==-- Maps --== */
-import PlaygroundMapData from '../assets/maps/playground.json';
+const assets: Record<string, string> = {};
 
-export const assets: Record<string, string> = {
-    ['tilesets/prototype.json']: PrototypeTilesetData,
-    ['tilesets/prototype.png']: PrototypeTilesetImage,
-    ['maps/playground.json']: PlaygroundMapData,
-};
+interface FileAsset {
+    path: string,
+    name: string,
+    size: number,
+    extension: string,
+    type: 'file',
+}
+
+interface DirectoryAsset {
+    path: string,
+    name: string,
+    children: Asset[],
+    size: number,
+    type: 'directory',
+}
+
+type Asset = FileAsset | DirectoryAsset;
+
+function processEntry(asset: Asset) {
+    const unixPath = asset.path.replace(/\\/g, '/');
+    if (asset.type === 'file') assets[unixPath.replace(/^assets\//, '')] = path.join('../', unixPath);
+    else asset.children.forEach(processEntry);
+}
+
+processEntry(assetsTree as Asset);
 
 /* ==-- Loader Logic --== */
 
