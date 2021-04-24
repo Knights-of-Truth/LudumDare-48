@@ -1,6 +1,9 @@
 # Gimp
 *.xcf
 
+# Tiled
+*.tiled-session
+
 # Node
 node_modules
 
