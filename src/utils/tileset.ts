@@ -1,7 +1,7 @@
 import path from 'path';
-import { BaseTexture, Rectangle, Texture } from 'pixi.js';
+import * as PIXI from 'pixi.js';
 import * as Tiled from '../tiled';
-import { Map } from './map';
+import Map from './map';
 
 /**
  * A container of loaded resources, with keys being path names,
@@ -25,7 +25,7 @@ export default class Tileset {
     /**
      * The base texture of the tileset's tiles.
      */
-    public readonly baseTexture: BaseTexture;
+    public readonly baseTexture: PIXI.BaseTexture;
 
     /**
      * GID corresponding to the first tile in the set
@@ -35,7 +35,7 @@ export default class Tileset {
      * The array of tiles textures included in this tileset.
      * The key is a 'local tile id', which is 0-based.
      */
-    public readonly textures: Texture[] = [];
+    public readonly textures: PIXI.Texture[] = [];
     /**
      * A record storing any metadata available for a tile.
      * - Keys: The tile's local id, which is 0-based.
@@ -96,7 +96,7 @@ export default class Tileset {
         const tilesetImage = Tileset.resolveImage(resources, data.image, this.path);
 
         // Load the tileset's base texture.
-        this.baseTexture = new BaseTexture(tilesetImage);
+        this.baseTexture = new PIXI.BaseTexture(tilesetImage);
 
         //Note: {grid} is for tileset of multiple images.
 
@@ -125,9 +125,9 @@ export default class Tileset {
         for (let row = 0; row < rows; row++) {
             for (let column = 0; column < columns; column++) {
                 const localTileId = column + row * columns;
-                this.textures[localTileId] = new Texture(
+                this.textures[localTileId] = new PIXI.Texture(
                     this.baseTexture,
-                    new Rectangle(
+                    new PIXI.Rectangle(
                         margin + column * (tilewidth + spacing),
                         margin + row * (tileheight + spacing),
                         tilewidth, tileheight

@@ -124,10 +124,11 @@ export default class Map {
         //TODO: layers.
         for (const layer of layers) {
             if (layer.type === 'tilelayer') {
+                // TODO: Store the layers in a unified array.
                 const tileLayer = new GridTileLayer(this, layer);
-                this.container.addChild(tileLayer.container);
+                this.container.addChild(tileLayer);
             } else {
-                throw new Error(`Layers of type ${layer.type} are not supported yet!`);
+                throw new Error('Only tile layers are currently supported!');
             }
         }
     }

@@ -1,18 +1,18 @@
 import { Sprite } from 'pixi.js';
+import Tile from './tile';
 import Map from './map';
 
 const FLIPPED_HORIZONTALLY_FLAG = 0x8000_0000;
 const FLIPPED_VERTICALLY_FLAG = 0x4000_0000;
 const FLIPPED_DIAGONALLY_FLAG = 0x2000_0000;
 
-const RAD_TO_DEG = 180 / Math.PI;
-const DEG_TO_RAD = Math.PI / 180;
-
-export default class TileSprite extends Sprite {
+export default class TileSprite extends Sprite implements Tile {
     private _tileId!: number;
     private _flippedHorizontally = false;
     private _flippedVertically = false;
     private _flippedDiagonally = false;
+
+    public readonly isZeroSupported = false;
 
     /**
      * Creates a new tile sprite.
@@ -26,9 +26,6 @@ export default class TileSprite extends Sprite {
         this.rawTileId = rawTileId;
     }
 
-    /**
-     * The global id of the tile's texture.
-     */
     get tileId() { return this._tileId }
     set tileId(value: number) {
         if (value <= 0) throw new Error('tileId must be a positive integer');
@@ -36,9 +33,6 @@ export default class TileSprite extends Sprite {
         this.texture = this.map.textures[value];
     }
 
-    /**
-     * The global id of the tile's texture, with flipping bits included.
-     */
     get rawTileId() {
         let value = this.tileId;
 
@@ -59,27 +53,18 @@ export default class TileSprite extends Sprite {
         this._updateFlipping();
     }
 
-    /**
-     * Whether the tile is flipped horizontally or not.
-     */
     get flippedHorizontally() { return this._flippedHorizontally }
     set flippedHorizontally(value: boolean) {
         this._flippedHorizontally = value;
         this._updateFlipping();
     }
 
-    /**
-     * Whether the tile is flipped vertically or not.
-     */
     get flippedVertically() { return this._flippedVertically }
     set flippedVertically(value: boolean) {
         this._flippedVertically = value;
         this._updateFlipping();
     }
 
-    /**
-     * Whether the tile is flipped diagonally or not.
-     */
     get flippedDiagonally() { return this._flippedDiagonally }
     set flippedDiagonally(value: boolean) {
         this._flippedDiagonally = value;
