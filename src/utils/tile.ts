@@ -1,3 +1,5 @@
+import GridTileLayer from './grid-tilelayer';
+
 export default interface Tile {
     /**
      * Whether the tileId 0 is supported or not.
@@ -12,6 +14,11 @@ export default interface Tile {
      * The Y-coordinates of the tile in grid units.
      */
     readonly tileY: number;
+
+    /**
+     * The tile layer which the tile belongs to.
+     */
+    readonly layer: GridTileLayer;
     
     /**
      * The global id of the tile's texture.

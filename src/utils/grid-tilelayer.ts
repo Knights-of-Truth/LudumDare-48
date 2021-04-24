@@ -16,7 +16,7 @@ class GridTile implements Tile {
     protected tileSprite: TileSprite | null;
 
     public constructor(
-        public readonly tileLayer: GridTileLayer,
+        public readonly layer: GridTileLayer,
         public readonly tileX: number,
         public readonly tileY: number,
         rawTileId: number
@@ -26,14 +26,14 @@ class GridTile implements Tile {
     }
 
     private createTileSprite(rawTileId: number) {
-        const { map, tint, opacity } = this.tileLayer;
+        const { tint, opacity } = this.layer;
 
-        const tileSprite = new TileSprite(map, this.tileX, this.tileY, rawTileId);
+        const tileSprite = new TileSprite(this.layer, this.tileX, this.tileY, rawTileId);
 
         tileSprite.tint = tint;
         tileSprite.alpha = opacity;
 
-        this.tileLayer.addChild(tileSprite);
+        this.layer.addChild(tileSprite);
         return tileSprite;
     }
 
@@ -46,7 +46,7 @@ class GridTile implements Tile {
             const tileSprite = this.tileSprite;
             if (tileSprite === null) return;
 
-            this.tileLayer.removeChild(tileSprite);
+            this.layer.removeChild(tileSprite);
             this.tileSprite = null;
         } else {
             const existingTileSprite = this.tileSprite;
@@ -55,7 +55,7 @@ class GridTile implements Tile {
             else this.tileSprite = this.createTileSprite(id);
         }
 
-        this.tileLayer.updateCachedBitmap();
+        this.layer.updateCachedBitmap();
     }
 
     get rawTileId() {
@@ -71,7 +71,7 @@ class GridTile implements Tile {
             else this.tileSprite = this.createTileSprite(id);
         }
 
-        this.tileLayer.updateCachedBitmap();
+        this.layer.updateCachedBitmap();
     }
 
     get flippedHorizontally() {
@@ -82,7 +82,7 @@ class GridTile implements Tile {
         if (tileSprite === null) return;
 
         tileSprite.flippedHorizontally = flipped;
-        this.tileLayer.updateCachedBitmap();
+        this.layer.updateCachedBitmap();
     }
 
     get flippedVertically() {
@@ -93,7 +93,7 @@ class GridTile implements Tile {
         if (tileSprite === null) return;
 
         tileSprite.flippedVertically = flipped;
-        this.tileLayer.updateCachedBitmap();
+        this.layer.updateCachedBitmap();
     }
 
     get flippedDiagonally() {
@@ -104,7 +104,7 @@ class GridTile implements Tile {
         if (tileSprite === null) return;
 
         tileSprite.flippedDiagonally = flipped;
-        this.tileLayer.updateCachedBitmap();
+        this.layer.updateCachedBitmap();
     }
 }
 
