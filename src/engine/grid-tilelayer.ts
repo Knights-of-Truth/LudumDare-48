@@ -3,6 +3,7 @@ import * as Tiled from '../tiled';
 
 import Map from './map';
 import Tile from './tile';
+import Entity from './entity';
 import TileSprite from './tile-sprite';
 
 import * as Utils from '../lib/utils';
@@ -13,7 +14,7 @@ import * as Utils from '../lib/utils';
  * Internally it automatically manages the tileSprite.
  */
 class GridTile implements Tile {
-    public readonly isZeroSupported = true;
+    public entity: Entity | undefined;
 
     protected tileSprite: TileSprite | null;
 
@@ -29,8 +30,10 @@ class GridTile implements Tile {
 
     private createTileSprite(rawTileId: number) {
         const { tint, opacity } = this.layer;
+        const { textures, tileWidth, tileHeight } = this.layer.map;
 
-        const tileSprite = new TileSprite(this.layer, this.tileX, this.tileY, rawTileId);
+        const tileSprite = new TileSprite(textures, rawTileId);
+        tileSprite.position.set((this.tileX + .5) * tileWidth, (this.tileY + .5) * tileHeight);
 
         tileSprite.tint = tint;
         tileSprite.alpha = opacity;
@@ -107,6 +110,18 @@ class GridTile implements Tile {
 
         tileSprite.flippedDiagonally = flipped;
         this.layer.updateCachedBitmap();
+    }
+
+    swapWith(tile: Tile): Tile {
+        const { rawTileId, entity } = tile;
+
+        tile.rawTileId = this.rawTileId;
+        tile.entity = this.entity;
+
+        this.rawTileId = rawTileId;
+        this.entity = entity;
+
+        return tile;
     }
 }
 

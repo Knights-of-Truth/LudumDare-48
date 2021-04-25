@@ -1,10 +1,12 @@
-import Tile from '../engine/tile';
+import { Entity, Tile } from '../engine';
 import Direction from '../lib/direction';
 
-export default class Player {
+export default class Player extends Entity {
     public onMove = () => { };
 
-    constructor(public tile: Tile, private solid: boolean[][]) { }
+    constructor(tile: Tile, private solid: boolean[][]) {
+        super(tile);
+    }
 
     private getTargetTile(direction: Direction): Tile | undefined {
         const {

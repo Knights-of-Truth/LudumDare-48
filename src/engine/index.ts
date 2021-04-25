@@ -1,3 +1,4 @@
+export { default as Entity } from './entity';
 export { default as GridTileLayer } from './grid-tilelayer';
 export { default as Map } from './map';
 export { default as TileSprite } from './tile-sprite';

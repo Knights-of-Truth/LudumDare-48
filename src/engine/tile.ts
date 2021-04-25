@@ -1,11 +1,7 @@
+import Entity from './entity';
 import GridTileLayer from './grid-tilelayer';
 
 export default interface Tile {
-    /**
-     * Whether the tileId 0 is supported or not.
-     */
-    readonly isZeroSupported: boolean;
-
     /**
      * The X-coordinates of the tile in grid units.
      */
@@ -42,4 +38,20 @@ export default interface Tile {
      * Whether the tile is flipped diagonally or not.
      */
     flippedDiagonally: boolean;
+
+    /**
+     * Entity logic assocciated with the tile.
+     */
+    entity: Entity | undefined;
+
+    /**
+     * Swaps 2 tiles, this tile, and the target tile.
+     * 
+     * Which is done by swapping their internal values,
+     * including the raw tile id and the entity object (properly updating it's tile reference).
+     * 
+     * @param tile The target tile.
+     * @returns The target tile after swapping (same reference).
+     */
+    swapWith(tile: Tile): Tile;
 }

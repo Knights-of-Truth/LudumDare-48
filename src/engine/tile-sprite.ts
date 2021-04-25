@@ -1,37 +1,29 @@
 import * as PIXI from 'pixi.js';
-import Tile from './tile';
-import GridTileLayer from './grid-tilelayer';
 
 const FLIPPED_HORIZONTALLY_FLAG = 0x8000_0000;
 const FLIPPED_VERTICALLY_FLAG = 0x4000_0000;
 const FLIPPED_DIAGONALLY_FLAG = 0x2000_0000;
 
-export default class TileSprite extends PIXI.Sprite implements Tile {
+export default class TileSprite extends PIXI.Sprite {
     private _tileId!: number;
     private _flippedHorizontally = false;
     private _flippedVertically = false;
     private _flippedDiagonally = false;
 
-    public readonly isZeroSupported = false;
-
     /**
      * Creates a new tile sprite.
-     * @param layer The tile layer which the tile belongs to.
-     * @param tileX The X-coordinates of the tile in grid units.
-     * @param tileY The Y-coordinates of the tile in grid units.
+     * 
+     * @param textures A record storing the textures of tiles in the tilesets,
+     *  available in the map object.
      * @param rawTileId The raw id of the tile, including the flipping bits.
      */
     constructor(
-        public layer: GridTileLayer,
-        public readonly tileX: number,
-        public readonly tileY: number,
+        private readonly textures: Record<number, PIXI.Texture>,
         rawTileId: number
     ) {
         super();
-        const { map } = this.layer;
 
         this.anchor.set(0.5, 0.5);
-        this.position.set((tileX + .5) * map.tileWidth, (tileY + .5) * map.tileHeight);
         this.rawTileId = rawTileId;
     }
 
@@ -39,7 +31,7 @@ export default class TileSprite extends PIXI.Sprite implements Tile {
     set tileId(value: number) {
         if (value <= 0) throw new Error('tileId must be a positive integer');
         this._tileId = value;
-        this.texture = this.layer.map.textures[value];
+        this.texture = this.textures[value];
     }
 
     get rawTileId() {
