@@ -9,11 +9,13 @@
     "pixi.js": "^6.0.0"
   },
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "webpack && sass styles/game.scss dist/game.css",
+    "sass-watch": "sass --watch styles/game.scss dist/game.css",
+    "watch": "yarn webpack --watch"
   },
   "devDependencies": {
     "directory-tree-webpack-plugin": "^1.0.2",
+    "sass": "^1.32.11",
     "ts-loader": "^8.0.18",
     "typescript": "^4.2.3",
     "webpack": "^5.27.1",
