@@ -23,6 +23,11 @@ export default class Tileset {
     public readonly path: string;
 
     /**
+     * The tileset's image.
+     */
+    public readonly sourceImage: HTMLImageElement;
+
+    /**
      * The base texture of the tileset's tiles.
      */
     public readonly baseTexture: PIXI.BaseTexture;
@@ -93,10 +98,10 @@ export default class Tileset {
             : Tileset.resolveTilesetData(resources, this.path);
 
         // Resolve the tileset's image.
-        const tilesetImage = Tileset.resolveImage(resources, data.image, this.path);
+        this.sourceImage = Tileset.resolveImage(resources, data.image, this.path);
 
         // Load the tileset's base texture.
-        this.baseTexture = new PIXI.BaseTexture(tilesetImage);
+        this.baseTexture = new PIXI.BaseTexture(this.sourceImage);
 
         //Note: {grid} is for tileset of multiple images.
 
