@@ -9,8 +9,8 @@ const inventoryTemplate = `
 <div class="inventory-content"></div>
 `;
 
-export default class InventoryUI {
-    protected readonly element: HTMLElement = InventoryUI.createInventoryElement();
+export default class Inventory {
+    protected readonly element: HTMLElement = Inventory.createInventoryElement();
 
     constructor(
         protected readonly map: Map,
@@ -34,24 +34,30 @@ export default class InventoryUI {
         this.element.classList.toggle('closed');
     }
 
-    get isOpen() {
+    public get isOpen() {
         return this.element.classList.contains('closed');
     }
 
-    public addItem(tileId: number) {
+    /**
+     * Adds an item to the player's inventory.
+     * @param itemId The ID of the item to add.
+     */
+    public addItem(itemId: number) {
         const slot = this.element.querySelector('.inventory-slot:empty');
         if (!slot) throw new Error('No empty inventory slots!');
 
-        const texture = this.map.textures[tileId];
+        const texture = this.map.textures[itemId];
         const tileset = this.map.tilesets.find((tileset) =>
-            tileset.firstGID <= tileId && tileId < tileset.firstGID + tileset.tileCount);
-        
+            tileset.firstGID <= itemId && itemId < tileset.firstGID + tileset.tileCount);
+
         if (!tileset) throw new Error('Can\'t find the tileset of the item!');
 
 
         const scale = slot.clientWidth / texture.width * 0.6;
 
         const element = document.createElement('div');
+        element.className = 'inventory-item';
+
         element.style.width = `${texture.width}px`;
         element.style.height = `${texture.height}px`;
         element.style.imageRendering = 'optimizeSpeed';
@@ -59,7 +65,58 @@ export default class InventoryUI {
         element.style.transform = `scale(${Math.floor(scale + 0.5)})`;
         // element.style.filter = 'drop-shadow(.5px .5px 0 rgba(0,0,0, 0.5))';
 
+        element.setAttribute('data-item-id', itemId.toString());
+
         slot.appendChild(element);
+    }
+
+    /**
+     * Checks whether the inventory contains an item or not.
+     * @param itemId The ID of the item to test for.
+     * @returns Whether there's an copy of the item in the inventory or not.
+     */
+    public hasItem(itemId: number) {
+        return !!this.element.querySelector(`.inventory-item[data-item-id=${itemId.toString()}]`);
+    }
+
+    /**
+     * Counts the number of an item in the inventory.
+     * @param itemId The ID of the item to count.
+     * @returns The count of the item in the inventory.
+     */
+    public countItem(itemId: number) {
+        return this.element.querySelectorAll(`.inventory-item[data-item-id=${itemId.toString()}]`).length;
+    }
+
+    /**
+     * Attempts to find and remove an item from the inventory.
+     * @param itemId The ID of the item to remove.
+     * @returns Whether the item was found and removed, or not.
+     */
+    public removeItem(itemId: number) {
+        const item = this.element.querySelector(`.inventory-item[data-item-id=${itemId.toString()}]`);
+        item?.remove();
+        return !!item;
+    }
+
+    /**
+     * Clears all the items in the inventory.
+     */
+    public clearItems() {
+        this.element.querySelectorAll('.inventory-item').forEach((item) => item.remove());
+    }
+
+    /**
+     * Gets a list of all the current items in the inventory.
+     * @returns A list of all the items in the inventory.
+     */
+    public getItems() {
+        const items: number[] = [];
+
+        this.element.querySelectorAll('.inventory-item')
+            .forEach((slot) => items.push(Number.parseInt(slot.getAttribute('data-item-id') ?? '-1', 10)));
+
+        return items;
     }
 
     private static createInventoryElement() {
