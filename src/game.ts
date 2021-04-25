@@ -4,7 +4,6 @@ import * as Utils from './lib/utils';
 import KeyboardHandler from './lib/keyboard-handler';
 
 import { Map, Tile } from './engine';
-
 import { Crate, Player } from './entities';
 
 type Resources = Record<string, any>;
