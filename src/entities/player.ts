@@ -5,6 +5,7 @@ import * as Utils from '../lib/utils';
 import Inventory from '../interface/inventory';
 
 import { isPushable } from './pushable';
+import { isConsumable } from './consumable';
 
 export default class Player extends Entity {
     public readonly inventory = new Inventory(this.tile.layer.map);
@@ -51,14 +52,33 @@ export default class Player extends Entity {
         if (!targetTile || solidTiles[targetTile.tileX][targetTile.tileY]) return;
 
         const targetEntity = targetTile.entity;
-        if (targetEntity) {
-            if (!isPushable(targetEntity)) return;
-            targetEntity.push(direction, this.power);
-            if (targetTile.entity !== undefined) return;
-        }
+        if (targetEntity
+            && !this.attemptToConsume(targetEntity)
+            && !this.attemptToPush(targetEntity, direction)
+        ) return;
 
         this.tile = targetTile.swapWith(this.tile);
 
         this.onMove();
+    }
+
+    private attemptToConsume(entity: Entity) {
+        const { tile } = entity;
+        if (!isConsumable(entity)) return false;
+
+        entity.consume(this);
+        if (tile.entity !== undefined) return false;
+
+        return true;
+    }
+
+    private attemptToPush(entity: Entity, direction: Direction) {
+        const { tile } = entity;
+        if (!isPushable(entity)) return false;
+
+        entity.push(direction, this.power);
+        if (tile.entity !== undefined) return false;
+
+        return true;
     }
 }
