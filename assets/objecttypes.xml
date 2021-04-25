@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
- <objecttype name="Player" color="#ff00ff"/>
+ <objecttype name="Crate" color="#ff5500">
+  <property name="Weight" type="int" default="1"/>
+ </objecttype>
+ <objecttype name="Player" color="#ff00ff">
+  <property name="Power" type="int" default="1"/>
+ </objecttype>
 </objecttypes>

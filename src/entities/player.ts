@@ -1,13 +1,18 @@
 import { Entity, Tile } from '../engine';
 import Direction from '../lib/direction';
+import * as Utils from '../lib/utils';
 
 import { isPushable } from './pushable';
 
 export default class Player extends Entity {
     public onMove = () => { };
 
-    constructor(tile: Tile) {
-        super(tile);
+    get power() {
+        return Utils.getProperty(
+            this.tile.layer.map.tilesMetadata[this.tile.tileId]?.properties,
+            'Power',
+            'int'
+        ) ?? 1;
     }
 
     private getTargetTile(direction: Direction): Tile | undefined {
@@ -37,7 +42,7 @@ export default class Player extends Entity {
         const targetEntity = targetTile.entity;
         if (targetEntity) {
             if (!isPushable(targetEntity)) return;
-            targetEntity.push(direction, 2);
+            targetEntity.push(direction, this.power);
             if (targetTile.entity !== undefined) return;
         }
 

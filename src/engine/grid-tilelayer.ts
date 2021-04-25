@@ -138,7 +138,7 @@ export default class GridTileLayer extends PIXI.Container {
     /**
      * The properties of the layer, set in tiled.
      */
-    public readonly properties: Record<string, Readonly<Tiled.Property> | undefined> = {};
+    public readonly properties: Tiled.Property[];
 
     constructor(public readonly map: Map, tilelayer: Tiled.TileLayer) {
         super();
@@ -168,9 +168,8 @@ export default class GridTileLayer extends PIXI.Container {
         if (tintcolor !== undefined) this._tint = PIXI.utils.string2hex(tintcolor);
         this._opacity = opacity;
 
-        // Copy the properties into a readonly record.
-        for (const property of (properties ?? []))
-            this.properties[property.name] = property;
+        // Copy the properties.
+        this.properties = properties ?? [];
 
         // Construct the 2-dimensional tiles array.
         for (let x = 0; x < width; x++) this.tiles[x] = [];

@@ -37,7 +37,7 @@ export default class Map extends PIXI.Container {
     /**
      * The map's custom properties.
      */
-    public readonly properties: Record<string, Readonly<Tiled.Property> | undefined> = {};
+    public readonly properties: Tiled.Property[];
 
     /**
      * The map's loaded tilesets.
@@ -117,10 +117,7 @@ export default class Map extends PIXI.Container {
         this.tileHeight = tileheight;
 
         this.infinite = infinite;
-
-        // Copy the properties
-        if (properties !== undefined)
-            for (const property of properties) this.properties[property.name] = property;
+        this.properties = properties ?? [];
 
         // Load the tilesets, tiles textures and the tiles metadata.
         if (tilesets !== undefined) {

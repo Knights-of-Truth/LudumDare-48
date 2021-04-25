@@ -1,12 +1,12 @@
 import { Entity, Tile, Tileset } from '../engine';
 import Direction from '../lib/direction';
+import * as Utils from '../lib/utils';
 
 import { isPushable, Pushable } from './pushable';
 
 export default class Crate extends Entity implements Pushable {
-
     push(direction: Direction, power = 1) {
-        if (power < 1) return;
+        if (power < this.weight) return;
 
         const solidTiles = this.tile.layer.map.solidTiles;
         const targetTile = this.getTargetTile(direction);
@@ -15,11 +15,19 @@ export default class Crate extends Entity implements Pushable {
         const targetEntity = targetTile.entity;
         if (targetEntity) {
             if (!isPushable(targetEntity)) return;
-            targetEntity.push(direction, power - 1);
+            targetEntity.push(direction, power - this.weight);
             if (targetTile.entity !== undefined) return;
         }
 
         this.tile = targetTile.swapWith(this.tile);
+    }
+
+    get weight() {
+        return Utils.getProperty(
+            this.tile.layer.map.tilesMetadata[this.tile.tileId]?.properties,
+            'Weight',
+            'int'
+        ) ?? 1;
     }
 
     private getTargetTile(direction: Direction): Tile | undefined {

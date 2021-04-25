@@ -24,6 +24,12 @@
         }, 
         {
          "id":64,
+         "properties":[
+                {
+                 "name":"Power",
+                 "type":"int",
+                 "value":3
+                }],
          "type":"Player"
         }],
  "tilewidth":8,

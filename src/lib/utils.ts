@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import * as Tiled from '../tiled';
 import { Entity, Map, Tile } from '../engine';
 
-type Properties = Record<string, Readonly<Tiled.Property> | undefined>;
+type Properties = Tiled.Property[] | undefined;
 
 /**
  * Gets the value of a property in a record, validating it's type.
@@ -20,8 +20,10 @@ export function getProperty(properties: Properties, name: string, type: 'bool'):
 export function getProperty(properties: Properties, name: string, type: 'color'): number | undefined
 export function getProperty(properties: Properties, name: string, type: 'file'): string | undefined
 export function getProperty(properties: Properties, name: string, type: Tiled.Property['type']): Tiled.Property['value'] | undefined {
-    const property = properties[name];
-    if (property === undefined) return undefined;
+    if (properties === undefined) return;
+    const property = properties.find((property) => property.name === name);
+    if (property === undefined) return;
+
     if (property.type !== type) {
         console.warn(`The '${name}' property is set as '${property.type}', it should be instead '${type}'!`);
         return;
@@ -29,7 +31,7 @@ export function getProperty(properties: Properties, name: string, type: Tiled.Pr
 
     const value = property.value;
 
-    // If it's a color, convert it into a number. 
+    // If it's a color, convert it into a number.
     if (type === 'color' && typeof value === 'string')
         return PIXI.utils.string2hex(value);
 
