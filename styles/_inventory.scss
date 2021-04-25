@@ -1,0 +1,104 @@
+@use './fonts';
+
+.inventory {
+    width: auto;
+    height: auto;
+
+    margin: auto;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    top: 50vh;
+    left: 50vw;
+    position: fixed;
+    z-index: 15;
+
+    transform: translate(-50%, -50%);
+
+    background: var(--white);
+    border: 4px solid var(--gray);
+    box-shadow: 4px 4px 0 0 var(--dark-gray);
+
+    &-top-row {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        color: var(--dark-gray);
+    }
+
+    &-title {
+        margin-left: 13px;
+        margin-bottom: 3px;
+        align-self: flex-end;
+    }
+
+    &-close {
+        width: 30px;
+        height: 30px;
+
+        padding: 0;
+        padding-top: 2px;
+        padding-left: 2px;
+
+        align-self: flex-start;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: var(--red);
+        border: 3px solid var(--dark-red);
+        color: var(--dark-red);
+
+        --button-height: 3px;
+
+        box-shadow: 0 var(--button-height) 0 0 var(--dark-red);
+
+        font-family: "LIKO-12", monospace;
+
+        &:hover {
+            color: var(--white);
+            border-color: var(--pink);
+        }
+
+        &:active {
+            background: var(--dark-red);
+            border-color: var(--red);
+            color: var(--red);
+
+            box-shadow: none;
+            transform: translate(0, var(--button-height));
+        }
+    }
+
+    &-content {
+        width: 100%;
+
+        margin-top: 10px;
+
+        display: grid;
+        grid-template-columns: repeat(var(--inventory-columns), 1fr);
+    }
+
+    &-slot {
+        width: var(--slot-size);
+        height: var(--slot-size);
+
+        margin: var(--slot-margin);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: var(--gray);
+        border: 2px solid var(--dark-gray);
+
+        box-shadow: 2px 2px 0 0 var(--dark-gray);
+    }
+}

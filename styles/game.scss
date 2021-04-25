@@ -1,5 +1,6 @@
 @use './fonts';
 @use './dialog';
+@use './inventory';
 
 :root {
     font-family: 'LIKO-12', monospace;
@@ -17,4 +18,15 @@
     --inventory-columns: 5;
     --slot-size: 50px;
     --slot-margin: 5px;
+}
+
+.test-item {
+    width: 8px;
+    height: 8px;
+
+    image-rendering: optimizeSpeed;
+
+    background: url('../assets/tilesets/prototype.png') 0 -32px;
+    transform: scale(4);
+    filter: drop-shadow(.5px .5px 0 rgba(0,0,0, 0.5));
 }
