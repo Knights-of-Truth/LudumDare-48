@@ -29,6 +29,7 @@ export default class Game {
         player.onMove = focusOnPlayer;
 
         this.keyboardHandler.onDirection = player.move.bind(player);
+        this.keyboardHandler.onInventory = player.toggleInventory.bind(player);
 
         focusOnPlayer();
     }

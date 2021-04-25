@@ -1,6 +1,6 @@
 import Direction from './direction';
 
-let keyboardBindings: {[keyName: string]: Direction} = {
+const keyboardBindings: {[keyName: string]: Direction} = {
     ArrowUp: Direction.TOP,
     ArrowRight: Direction.RIGHT,
     ArrowDown: Direction.BOTTOM,
@@ -12,11 +12,18 @@ let keyboardBindings: {[keyName: string]: Direction} = {
     KeyA: Direction.LEFT
 }
 
+const inventoryBindings = ['KeyE', 'KeyI'];
+
 export default class KeyboardHandler {
     /**
      * A callback to be triggered when a direction button is pressed.
      */
     public onDirection: (direction: Direction) => void = () => {};
+
+    /**
+     * A callback to be triggered when the inventory button ispressed.
+     */
+    public onInventory = () => {};
 
     constructor() {
         document.addEventListener("keydown", this.onkeydown.bind(this));
@@ -25,5 +32,8 @@ export default class KeyboardHandler {
     onkeydown(ev: KeyboardEvent) {
         if (ev.code in keyboardBindings)
             this.onDirection(keyboardBindings[ev.code]);
+        
+        if (inventoryBindings.includes(ev.code))
+            this.onInventory();
     }
 }
