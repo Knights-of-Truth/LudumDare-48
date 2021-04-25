@@ -1,1 +1,2 @@
+automap/resolve walls.tmx
 automap/walls shadow.tmx
