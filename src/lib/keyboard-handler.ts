@@ -6,10 +6,10 @@ let keyboardBindings: {[keyName: string]: Direction} = {
     ArrowDown: Direction.BOTTOM,
     ArrowLeft: Direction.LEFT,
 
-    w: Direction.TOP, W: Direction.TOP,
-    d: Direction.RIGHT, D: Direction.RIGHT,
-    s: Direction.BOTTOM, S: Direction.BOTTOM,
-    a: Direction.LEFT, A: Direction.LEFT
+    KeyW: Direction.TOP,
+    KeyD: Direction.RIGHT,
+    KeyS: Direction.BOTTOM,
+    KeyA: Direction.LEFT
 }
 
 export default class KeyboardHandler {
@@ -23,7 +23,7 @@ export default class KeyboardHandler {
     }
 
     onkeydown(ev: KeyboardEvent) {
-        if (ev.key in keyboardBindings)
-            this.onDirection(keyboardBindings[ev.key]);
+        if (ev.code in keyboardBindings)
+            this.onDirection(keyboardBindings[ev.code]);
     }
 }
