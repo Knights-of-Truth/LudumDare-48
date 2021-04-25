@@ -2,10 +2,30 @@ import { Entity, Tile } from '../engine';
 import Direction from '../lib/direction';
 import * as Utils from '../lib/utils';
 
+import InventoryUI from '../interface/inventory-ui';
+
 import { isPushable } from './pushable';
 
 export default class Player extends Entity {
+    private readonly inventoryUI = new InventoryUI(this.tile.layer.map);
     public onMove = () => { };
+
+    constructor(tile: Tile) {
+        super(tile);
+
+        // this.inventoryUI.show();
+        this.inventoryUI.addItem(98);
+        this.inventoryUI.addItem(35);
+        this.inventoryUI.addItem(129);
+    }
+
+    openInventory() {
+        this.inventoryUI.show();
+    }
+
+    toggleInventory() {
+        this.inventoryUI.toggle();
+    }
 
     get power() {
         return Utils.getProperty(
