@@ -1,0 +1,1 @@
+automap/walls shadow.tmx

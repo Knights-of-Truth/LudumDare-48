@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="7" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="4" nextobjectid="1">
+ <tileset firstgid="1" source="../tilesets/prototype.json"/>
+ <layer id="1" name="regions" width="7" height="7">
+  <data encoding="csv">
+35,0,35,0,35,0,35,
+0,0,0,0,0,0,0,
+35,0,35,0,35,0,35,
+0,0,0,0,0,0,0,
+35,0,35,0,35,0,35,
+0,0,0,0,0,0,0,
+35,0,35,0,0,0,35
+</data>
+ </layer>
+ <layer id="3" name="output_Walls shadow" width="7" height="7" offsetx="1" offsety="1">
+  <data encoding="csv">
+194,0,163,0,164,0,196,
+0,0,0,0,0,0,0,
+2684354754,0,2684354723,0,164,0,196,
+0,0,0,0,0,0,0,
+3221225666,0,3221225635,0,195,0,196,
+0,0,0,0,0,0,0,
+1610612930,0,1610612899,0,0,0,196
+</data>
+ </layer>
+ <layer id="2" name="input_Walls" width="7" height="7">
+  <data encoding="csv">
+197,0,166,0,167,0,199,
+0,0,0,0,0,0,0,
+2684354757,0,2684354726,0,2684354727,0,2684354759,
+0,0,0,0,0,0,0,
+3221225669,0,3221225638,0,198,0,3221225671,
+0,0,0,0,0,0,0,
+1610612933,0,1610612902,0,0,0,1610612935
+</data>
+ </layer>
+</map>

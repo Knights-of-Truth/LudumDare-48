@@ -25,10 +25,10 @@
  "tilewidth":8,
  "transformations":
     {
-     "hflip":true,
+     "hflip":false,
      "preferuntransformed":true,
      "rotate":true,
-     "vflip":true
+     "vflip":false
     },
  "type":"tileset",
  "version":"1.6",
@@ -137,19 +137,25 @@
                  "color":"#ff0000",
                  "name":"Solid",
                  "probability":1,
-                 "tile":-1
+                 "tile":130
                 }, 
                 {
                  "color":"#00ff00",
                  "name":"White",
                  "probability":1,
-                 "tile":-1
+                 "tile":133
                 }, 
                 {
                  "color":"#0000ff",
                  "name":"Pipe",
                  "probability":1,
-                 "tile":-1
+                 "tile":39
+                }, 
+                {
+                 "color":"#ff7700",
+                 "name":"Orange",
+                 "probability":1,
+                 "tile":196
                 }],
          "name":"Wall",
          "tile":-1,
@@ -246,6 +252,26 @@
                 {
                  "tileid":139,
                  "wangid":[2, 0, 0, 0, 2, 0, 3, 0]
+                }, 
+                {
+                 "tileid":165,
+                 "wangid":[0, 0, 0, 0, 4, 0, 0, 0]
+                }, 
+                {
+                 "tileid":166,
+                 "wangid":[4, 0, 0, 0, 4, 0, 0, 0]
+                }, 
+                {
+                 "tileid":196,
+                 "wangid":[4, 0, 4, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":197,
+                 "wangid":[4, 0, 4, 0, 4, 0, 4, 0]
+                }, 
+                {
+                 "tileid":198,
+                 "wangid":[4, 0, 0, 0, 4, 0, 4, 0]
                 }]
         }]
 }

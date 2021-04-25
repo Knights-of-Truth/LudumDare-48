@@ -1,11 +1,12 @@
 {
-    "automappingRulesFile": "",
+    "automappingRulesFile": "rules.txt",
     "commands": [
     ],
     "extensionsPath": "../extensions",
     "folders": [
         "maps",
-        "tilesets"
+        "tilesets",
+        "automap"
     ],
     "objectTypesFile": "objecttypes.xml"
 }
