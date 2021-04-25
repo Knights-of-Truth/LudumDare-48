@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'LIKO-12';
+    src: url(../assets/fonts/liko-12.ttf);
+}
+
+.dialog {
+    width: auto;
+    height: auto;
+    /* min-height: 200px; */
+
+    margin: 20px;
+    padding: 20px;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 10;
+
+    background: black;
+    border: 5px solid white;
+    color: white;
+
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'LIKO-12';
+
+    user-select: none;
+}
