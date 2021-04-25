@@ -4,6 +4,8 @@ import * as Tiled from '../tiled';
 import Tileset from './tileset';
 import GridTileLayer from './grid-tilelayer';
 
+import * as Utils from '../lib/utils';
+
 /**
  * A container of loaded resources, with keys being path names,
  * and values being the loaded resource.
@@ -57,6 +59,12 @@ export default class Map extends PIXI.Container {
      * The map's loaded layers.
      */
     public readonly layers: GridTileLayer[] = [];
+
+    /**
+     * A 2-dimenional array with the dimensions of the map,
+     * stores 'true' for each solid tile.
+     */
+    public readonly solidTiles: boolean[][] = [];
 
     /**
      * Load and create a new map instance.
@@ -139,6 +147,28 @@ export default class Map extends PIXI.Container {
                 // TODO: Support layers types other than tile layers.
                 console.warn(`Layer #${layer.id} '${layer.name}' has been ignored because it's not supported!\n(Only tile layers are supported)`);
             }
+        }
+
+        // Update the solid tiles matrix.
+        this.updateSolid();
+    }
+
+    public updateSolid() {
+        const { layers, mapWidth, mapHeight } = this;
+
+        // Clear the existing data.
+        this.solidTiles.length = 0;
+
+        // Create the columns.
+        for (let x = 0; x < mapWidth; x++) this.solidTiles[x] = [];
+
+        // Scan the layers.
+        for (const layer of layers) {
+            if (!Utils.getProperty(layer.properties, 'Solid', 'bool')) continue;
+            for (let x = 0; x < mapWidth; x++)
+                for (let y = 0; y < mapHeight; y++)
+                    if (layer.tiles[x][y].tileId !== 0)
+                        this.solidTiles[x][y] = true;
         }
     }
 

@@ -4,7 +4,7 @@ import Direction from '../lib/direction';
 export default class Player extends Entity {
     public onMove = () => { };
 
-    constructor(tile: Tile, private solid: boolean[][]) {
+    constructor(tile: Tile) {
         super(tile);
     }
 
@@ -28,8 +28,9 @@ export default class Player extends Entity {
     }
 
     move(direction: Direction) {
+        const solidTiles = this.tile.layer.map.solidTiles;
         const targetTile = this.getTargetTile(direction);
-        if (!targetTile || this.solid[targetTile.tileX][targetTile.tileY]) return;
+        if (!targetTile || solidTiles[targetTile.tileX][targetTile.tileY]) return;
 
         const targetRawId = targetTile.rawTileId;
         targetTile.rawTileId = this.tile.rawTileId;

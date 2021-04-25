@@ -5,7 +5,7 @@ import KeyboardHandler from './lib/keyboard-handler';
 
 import { Map, Tile } from './engine';
 
-import Player from './entities/player';
+import { Crate, Player } from './entities';
 
 type Resources = Record<string, any>;
 
@@ -14,8 +14,6 @@ export default class Game {
     public readonly stage = new PIXI.Container();
     public readonly map: Map;
 
-    private readonly solid: boolean[][] = [];
-
     constructor(resources: Resources) {
         const urlMap = document.location.hash;
         const mapPath = urlMap.startsWith('#') ? `maps/${urlMap.substring(1)}.json` : 'maps/playground.json';
@@ -23,9 +21,7 @@ export default class Game {
         this.map = new Map(resources, mapPath);
         this.stage.addChild(this.map);
 
-        this.updateSolid();
-
-        const player = Game.findAndConstructPlayer(this.map, this.solid);
+        const player = Game.findAndConstructPlayer(this.map);
         if (!player) throw new Error("Can't find the player!");
 
         const focusOnPlayer = () => this.focusOnTile(player.tile);
@@ -34,25 +30,6 @@ export default class Game {
         this.keyboardHandler.onDirection = player.move.bind(player);
 
         focusOnPlayer();
-    }
-
-    private updateSolid() {
-        const { layers, mapWidth, mapHeight } = this.map;
-
-        // Clear the existing data.
-        this.solid.length = 0;
-
-        // Create the columns.
-        for (let x = 0; x < mapWidth; x++) this.solid[x] = [];
-
-        // Scan the layers.
-        for (const layer of layers) {
-            if (!Utils.getProperty(layer.properties, 'Solid', 'bool')) continue;
-            for (let x = 0; x < mapWidth; x++)
-                for (let y = 0; y < mapHeight; y++)
-                    if (layer.tiles[x][y].tileId !== 0)
-                        this.solid[x][y] = true;
-        }
     }
 
     /**
@@ -73,9 +50,9 @@ export default class Game {
      * @param map The map to search for the player in.
      * @returns The constructed player.
      */
-    static findAndConstructPlayer(map: Map, solid: boolean[][]) {
+    static findAndConstructPlayer(map: Map) {
         const playerTile = Game.findFirstPlayerTile(map);
-        return playerTile ? new Player(playerTile, solid) : null;
+        return playerTile ? new Player(playerTile) : null;
     }
 
     /**
