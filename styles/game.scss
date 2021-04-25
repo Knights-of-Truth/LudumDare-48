@@ -1,0 +1,20 @@
+@use './fonts';
+@use './dialog';
+
+:root {
+    font-family: 'LIKO-12', monospace;
+    user-select: none;
+
+    --black: #000000;
+    --dark-gray: #60584f;
+    --gray: #c3c3c6;
+    --white: #fff1e9;
+
+    --dark-red: #7f2454;
+    --red: #ed1b51;
+    --pink: #f176a6;
+
+    --inventory-columns: 5;
+    --slot-size: 50px;
+    --slot-margin: 5px;
+}
