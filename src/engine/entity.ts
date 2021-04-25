@@ -17,7 +17,7 @@ export default class Entity {
     }
     set tile(newTile) {
         newTile.entity = this;
-        this.tile.entity = undefined;
+        this._tile.entity = undefined;
         this._tile = newTile;
     }
 }

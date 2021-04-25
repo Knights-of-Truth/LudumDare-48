@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import * as Tiled from '../tiled';
-import { Map, Tile } from '../engine';
+import { Entity, Map, Tile } from '../engine';
 
 type Properties = Record<string, Readonly<Tiled.Property> | undefined>;
 

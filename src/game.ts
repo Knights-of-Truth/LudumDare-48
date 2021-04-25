@@ -21,7 +21,9 @@ export default class Game {
         this.map = new Map(resources, mapPath);
         this.stage.addChild(this.map);
 
-        const player = Game.findAndConstructPlayer(this.map);
+        Game.spawnEntities(this.map);
+
+        const player = Game.findFirstPlayerEntity(this.map);
         if (!player) throw new Error("Can't find the player!");
 
         const focusOnPlayer = () => this.focusOnTile(player.tile);
@@ -36,7 +38,7 @@ export default class Game {
      * Sets the pivot of the stage (which acts like a camera) to the center of a tile.
      * @param tile The tile to focus the camera on.
      */
-    protected focusOnTile(tile: Tile) {
+    public focusOnTile(tile: Tile) {
         const { tileX, tileY } = tile;
         const { tileWidth, tileHeight } = this.map;
 
@@ -44,15 +46,14 @@ export default class Game {
     }
 
     /**
-     * Searches for the first player tile it can find,
-     * and constructs a player object out of it.
+     * Searches for the first player entity it can find.
      * 
      * @param map The map to search for the player in.
-     * @returns The constructed player.
+     * @returns The player entity.
      */
-    static findAndConstructPlayer(map: Map) {
-        const playerTile = Game.findFirstPlayerTile(map);
-        return playerTile ? new Player(playerTile) : null;
+    protected static findFirstPlayerEntity(map: Map) {
+        const player = Game.findFirstPlayerTile(map)?.entity;
+        return player instanceof Player ? player : null;
     }
 
     /**
@@ -62,8 +63,21 @@ export default class Game {
      * @param map The map to search it's tiles.
      * @returns The first player tile found, or null if not found.
      */
-    static findFirstPlayerTile(map: Map) {
+    protected static findFirstPlayerTile(map: Map) {
         const playerTileIds = Utils.getTilesWithType(map, 'Player');
         return Utils.findFirstTileOfId(map, playerTileIds);
+    }
+
+
+    protected static spawnEntities(map: Map) {
+        map.layers.forEach((layer) => layer.tiles.forEach((column) => column.forEach((tile) => {
+            const tileMetadata = map.tilesMetadata[tile.tileId];
+            if (tileMetadata === undefined) return;
+
+            const { type } = tileMetadata;
+
+            if (type === 'Player') tile.entity = new Player(tile);
+            if (type === 'Crate') tile.entity = new Crate(tile);
+        })));
     }
 }
