@@ -31,6 +31,22 @@
                  "value":3
                 }],
          "type":"Player"
+        }, 
+        {
+         "id":160,
+         "type":"Item"
+        }, 
+        {
+         "id":192,
+         "type":"Item"
+        }, 
+        {
+         "id":224,
+         "type":"Item"
+        }, 
+        {
+         "id":225,
+         "type":"Item"
         }],
  "tilewidth":8,
  "transformations":
