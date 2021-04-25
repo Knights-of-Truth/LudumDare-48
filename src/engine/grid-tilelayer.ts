@@ -121,7 +121,7 @@ class GridTile implements Tile {
         this.rawTileId = rawTileId;
         this.entity = entity;
 
-        return tile;
+        return this;
     }
 }
 

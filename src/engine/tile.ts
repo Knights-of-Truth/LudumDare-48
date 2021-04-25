@@ -51,7 +51,7 @@ export default interface Tile {
      * including the raw tile id and the entity object (properly updating it's tile reference).
      * 
      * @param tile The target tile.
-     * @returns The target tile after swapping (same reference).
+     * @returns The current tile (this).
      */
     swapWith(tile: Tile): Tile;
 }

@@ -19,6 +19,10 @@
  "tileheight":8,
  "tiles":[
         {
+         "id":34,
+         "type":"Crate"
+        }, 
+        {
          "id":64,
          "type":"Player"
         }],
