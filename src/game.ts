@@ -4,7 +4,7 @@ import * as Utils from './lib/utils';
 import KeyboardHandler from './lib/keyboard-handler';
 
 import { Map, Tile } from './engine';
-import { Crate, Player } from './entities';
+import { Crate, Item, Player } from './entities';
 
 type Resources = Record<string, any>;
 
@@ -76,8 +76,9 @@ export default class Game {
 
             const { type } = tileMetadata;
 
-            if (type === 'Player') tile.entity = new Player(tile);
             if (type === 'Crate') tile.entity = new Crate(tile);
+            if (type === 'Item') tile.entity = new Item(tile);
+            if (type === 'Player') tile.entity = new Player(tile);
         })));
     }
 }

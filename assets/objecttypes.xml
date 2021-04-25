@@ -3,6 +3,7 @@
  <objecttype name="Crate" color="#ff5500">
   <property name="Weight" type="int" default="1"/>
  </objecttype>
+ <objecttype name="Item" color="#ffaaff"/>
  <objecttype name="Player" color="#ff00ff">
   <property name="Power" type="int" default="1"/>
  </objecttype>
