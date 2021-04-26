@@ -49,7 +49,7 @@ export default class Player extends Entity {
     move(direction: Direction) {
         const solidTiles = this.tile.layer.map.solidTiles;
         let targetTile = this.getTargetTile(direction);
-        if (!targetTile || solidTiles[targetTile.tileX][targetTile.tileY]) return;
+        if (!targetTile) return;
 
         const targetEntity = targetTile.entity;
         if (targetEntity
@@ -57,6 +57,7 @@ export default class Player extends Entity {
             && !this.attemptToPush(targetEntity, direction)
         ) return;
 
+        if (solidTiles[targetTile.tileX][targetTile.tileY]) return;
         this.tile = targetTile.swapWith(this.tile);
 
         this.onMove();
