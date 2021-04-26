@@ -25,7 +25,7 @@ type Asset = FileAsset | DirectoryAsset;
 
 function processEntry(asset: Asset) {
     const unixPath = asset.path.replace(/\\/g, '/');
-    if (asset.type === 'file') assets[unixPath.replace(/^assets\//, '')] = path.join('../', unixPath);
+    if (asset.type === 'file') assets[unixPath.replace(/^assets\//, '')] = unixPath;
     else asset.children.forEach(processEntry);
 }
 
@@ -36,7 +36,7 @@ processEntry(assetsTree as Asset);
 /**
  * The PIXI.Loader used to load the assets.
  */
-const loader = new PIXI.Loader();
+const loader = new PIXI.Loader(PACKAGED ? '' : '../');
 
 // Queue the assets for loading
 for (const resourcePath in assets) loader.add(resourcePath, assets[resourcePath]);

@@ -13,3 +13,4 @@ node_modules/
 # Build
 src/assets.json
 dist/
+build/
