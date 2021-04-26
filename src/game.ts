@@ -4,7 +4,9 @@ import * as Utils from './lib/utils';
 import KeyboardHandler from './lib/keyboard-handler';
 
 import { Map, Tile } from './engine';
-import { Crate, Item, Player } from './entities';
+import { Crate, Item, Player, StaticDialog } from './entities';
+
+import Dialog from './interface/dialog';
 
 type Resources = Record<string, any>;
 
@@ -12,15 +14,18 @@ export default class Game {
     public readonly keyboardHandler = new KeyboardHandler();
     public readonly stage = new PIXI.Container();
     public readonly map: Map;
+    public readonly dialog: Dialog;
 
     constructor(resources: Resources) {
+        this.dialog = new Dialog(this.keyboardHandler, resources);
+
         const urlMap = document.location.hash;
         const mapPath = urlMap.startsWith('#') ? `maps/${urlMap.substring(1)}.json` : 'maps/grounds.json';
 
         this.map = new Map(resources, mapPath);
         this.stage.addChild(this.map);
 
-        Game.spawnEntities(this.map);
+        this.spawnEntities();
 
         const player = Game.findFirstPlayerEntity(this.map);
         if (!player) throw new Error("Can't find the player!");
@@ -69,9 +74,9 @@ export default class Game {
     }
 
 
-    protected static spawnEntities(map: Map) {
-        map.layers.forEach((layer) => layer.tiles.forEach((column) => column.forEach((tile) => {
-            const tileMetadata = map.tilesMetadata[tile.tileId];
+    protected spawnEntities() {
+        this.map.layers.forEach((layer) => layer.tiles.forEach((column) => column.forEach((tile) => {
+            const tileMetadata = this.map.tilesMetadata[tile.tileId];
             if (tileMetadata === undefined) return;
 
             const { type } = tileMetadata;
@@ -79,6 +84,7 @@ export default class Game {
             if (type === 'Crate') tile.entity = new Crate(tile);
             if (type === 'Item') tile.entity = new Item(tile);
             if (type === 'Player') tile.entity = new Player(tile);
+            if (type === 'StaticDialog') tile.entity = new StaticDialog(tile, this.dialog);
         })));
     }
 }

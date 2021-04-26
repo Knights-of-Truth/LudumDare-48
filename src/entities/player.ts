@@ -3,6 +3,7 @@ import Direction from '../lib/direction';
 import * as Utils from '../lib/utils';
 
 import Inventory from '../interface/inventory';
+import Dialog from '../interface/dialog';
 
 import { isPushable } from './pushable';
 import { isConsumable } from './consumable';

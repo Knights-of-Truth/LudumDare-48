@@ -8,4 +8,7 @@
   <property name="Power" type="int" default="1"/>
  </objecttype>
  <objecttype name="Solid" color="#000000"/>
+ <objecttype name="StaticDialog" color="#a0a0a4">
+  <property name="DialogID" type="string"/>
+ </objecttype>
 </objecttypes>

@@ -18,7 +18,14 @@
     border: 5px solid var(--white);
     color: var(--white);
 
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 700;
     font-family: 'LIKO-12';
+
+    transition: opacity 150ms cubic-bezier(.19,1,.22,1);
+
+    &.closed {
+        opacity: 0;
+        pointer-events: none;
+    }
 }

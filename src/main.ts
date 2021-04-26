@@ -8,7 +8,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 const app = new PIXI.Application({
     width: 512,
     height: 512,
-    backgroundColor: 0x000000,
+    backgroundColor: 0x51a6dc,
     resizeTo: document.body
 });
 

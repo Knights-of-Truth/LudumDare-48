@@ -1,4 +1,3 @@
-import * as PIXI from 'pixi.js';
 import { Map } from '../engine';
 
 const inventoryTemplate = `
@@ -63,7 +62,7 @@ export default class Inventory {
         element.style.imageRendering = 'optimizeSpeed';
         element.style.background = `url('${tileset.sourceImage.src}') ${-texture.frame.x}px ${-texture.frame.y}px`;
         element.style.transform = `scale(${Math.floor(scale + 0.5)})`;
-        // element.style.filter = 'drop-shadow(.5px .5px 0 rgba(0,0,0, 0.5))';
+        element.style.filter = 'drop-shadow(.5px .5px 0 rgba(0,0,0, 0.5))';
 
         element.setAttribute('data-item-id', itemId.toString());
 
@@ -119,13 +118,10 @@ export default class Inventory {
         return items;
     }
 
-    private static createInventoryElement() {
+    private static createInventoryElement(): HTMLElement {
         const element = document.createElement('div');
         element.className = 'inventory closed';
         element.innerHTML = inventoryTemplate;
-
-        // // Hide the inventory by default.
-        // element.style.opacity = '0';
 
         return element;
     }
