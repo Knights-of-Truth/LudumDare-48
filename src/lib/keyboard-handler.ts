@@ -13,7 +13,7 @@ const keyboardBindings: { [keyName: string]: Direction } = {
 }
 
 const inventoryBindings = ['KeyE', 'KeyI'];
-const dialogBindings = ['Enter', 'Space', 'Tab', 'KeyZ', 'KeyX', 'KeyE'];
+// const dialogBindings = ['Enter', 'Space', 'Tab', 'KeyZ', 'KeyX', 'KeyE'];
 
 export default class KeyboardHandler {
     /**
@@ -36,7 +36,7 @@ export default class KeyboardHandler {
 
     onkeydown(ev: KeyboardEvent) {
         if (this.mode === 'dialog') {
-            if (dialogBindings.includes(ev.code))
+            // if (dialogBindings.includes(ev.code))
                 this.onDialog();
             return;
         }

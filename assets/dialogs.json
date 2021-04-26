@@ -1,3 +1,9 @@
 {
-    "home": "It's still early to get back home..."
+    "home": "<i>It's still early to go back home...</i>",
+    "house": [
+        "Hello there!",
+        "This is a multi-stage dialog",
+        "Emojis do work here 🤔",
+        "Multi\nlines too, with\n   whitespace"
+    ]
 }

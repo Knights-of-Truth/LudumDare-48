@@ -22,10 +22,14 @@
     font-weight: 700;
     font-family: 'LIKO-12';
 
-    transition: opacity 150ms cubic-bezier(.19,1,.22,1);
+    white-space: pre-wrap;
+
+    transition: opacity 160ms cubic-bezier(.19,1,.22,1);
 
     &.closed {
         opacity: 0;
         pointer-events: none;
+
+        transition-duration: 80ms;
     }
 }
