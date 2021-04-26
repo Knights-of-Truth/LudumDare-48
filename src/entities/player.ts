@@ -12,7 +12,10 @@ export default class Player extends Entity {
     public readonly inventory = new Inventory(this.tile.layer.map);
     public onMove = () => { };
 
-    constructor(tile: Tile) {
+    constructor(
+        tile: Tile,
+        public readonly dialog: Dialog
+    ) {
         super(tile);
     }
 

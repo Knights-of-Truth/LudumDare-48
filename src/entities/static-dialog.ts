@@ -12,10 +12,7 @@ export default class StaticDialog extends Entity implements Consumable {
         'string'
     );
 
-    constructor(
-        tile: Tile,
-        protected readonly dialog: Dialog
-    ) {
+    constructor( tile: Tile) {
         super(tile);
         if (this.dialogId === undefined)
             console.warn(`DialogID is not set for tile ${this.tile.tileId} ⚠`);
@@ -23,6 +20,6 @@ export default class StaticDialog extends Entity implements Consumable {
 
     consume(player: player): void {
         if (this.dialogId === undefined) return;
-        this.dialog.open(this.dialogId);
+        player.dialog.open(this.dialogId);
     }
 }
