@@ -12,7 +12,7 @@
     "package": "webpack --config webpack.prod.js && sass styles/game.scss build/dist/game.css",
     "build": "webpack --config webpack.dev.js && sass styles/game.scss dist/game.css",
     "sass-watch": "sass --watch styles/game.scss dist/game.css",
-    "watch": "yarn webpack --watch"
+    "watch": "yarn webpack --config webpack.dev.js --watch"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^8.1.1",
