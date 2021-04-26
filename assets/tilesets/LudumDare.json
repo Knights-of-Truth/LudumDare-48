@@ -401,6 +401,16 @@
          "type":"Solid"
         }, 
         {
+         "id":392,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"maanex"
+                }],
+         "type":"NPC"
+        }, 
+        {
          "id":400,
          "type":"Solid"
         }, 

@@ -4,7 +4,7 @@ import * as Utils from './lib/utils';
 import KeyboardHandler from './lib/keyboard-handler';
 
 import { Map, Tile } from './engine';
-import { Crate, Item, Player, StaticDialog } from './entities';
+import { Crate, Item, NPC, Player, StaticDialog } from './entities';
 
 import Dialog from './interface/dialog';
 
@@ -83,6 +83,7 @@ export default class Game {
 
             if (type === 'Crate') tile.entity = new Crate(tile);
             if (type === 'Item') tile.entity = new Item(tile);
+            if (type === 'NPC') tile.entity = new NPC(tile);
             if (type === 'Player') tile.entity = new Player(tile, this.dialog);
             if (type === 'StaticDialog') tile.entity = new StaticDialog(tile);
         })));

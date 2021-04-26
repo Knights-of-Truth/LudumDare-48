@@ -75,7 +75,7 @@ export default class Inventory {
      * @returns Whether there's an copy of the item in the inventory or not.
      */
     public hasItem(itemId: number) {
-        return !!this.element.querySelector(`.inventory-item[data-item-id=${itemId.toString()}]`);
+        return !!this.element.querySelector(`.inventory-item[data-item-id='${itemId.toString()}']`);
     }
 
     /**
@@ -84,7 +84,7 @@ export default class Inventory {
      * @returns The count of the item in the inventory.
      */
     public countItem(itemId: number) {
-        return this.element.querySelectorAll(`.inventory-item[data-item-id=${itemId.toString()}]`).length;
+        return this.element.querySelectorAll(`.inventory-item[data-item-id='${itemId.toString()}']`).length;
     }
 
     /**
@@ -93,7 +93,7 @@ export default class Inventory {
      * @returns Whether the item was found and removed, or not.
      */
     public removeItem(itemId: number) {
-        const item = this.element.querySelector(`.inventory-item[data-item-id=${itemId.toString()}]`);
+        const item = this.element.querySelector(`.inventory-item[data-item-id='${itemId.toString()}']`);
         item?.remove();
         return !!item;
     }

@@ -5,5 +5,21 @@
         "This is a multi-stage dialog",
         "Emojis do work here 🤔",
         "Multi\nlines too, with\n   whitespace"
+    ],
+    "maanex_01": [
+        "Hey you, I'm Mr. <span class='yellow'>Yellow</span> guy",
+        "I like <span color='yellow'>coins</span>!<br/><i>actually,</i> I <b class='pink'>LOVE</b> them!",
+        "Well, I've lost a <span class='yellow'>coin</span> around...",
+        "Can you <span class='blue'>find the</span> <span class='yellow'>coin</span> for me please?"
+    ],
+    "maanex_02": [
+        "<i>I'm still waiting...</i>",
+        "GO <span class='blue'>FIND ME THE</span> <b class='yellow'>COIN!</b>"
+    ],
+    "maanex_03": [
+        "Thanks you so much 💛💛"
+    ],
+    "maanex_00": [
+        "<b class='red'>GET AWAY OF MY COINS</b>"
     ]
 }

@@ -6,6 +6,9 @@
  <objecttype name="Item" color="#ffaaff">
   <property name="Weight" type="int" default="1"/>
  </objecttype>
+ <objecttype name="NPC" color="#a0a0a4">
+  <property name="NPCID" type="string"/>
+ </objecttype>
  <objecttype name="Player" color="#ff00ff">
   <property name="Power" type="int" default="1"/>
  </objecttype>
