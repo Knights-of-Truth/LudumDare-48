@@ -8,7 +8,276 @@
  "tilecount":480,
  "tiledversion":"1.6.0",
  "tileheight":8,
+ "tiles":[
+        {
+         "id":2,
+         "probability":0.0500000007450581
+        }, 
+        {
+         "id":3,
+         "probability":0.0500000007450581
+        }, 
+        {
+         "id":4,
+         "probability":0.200000002980232
+        }, 
+        {
+         "id":5,
+         "probability":0.200000002980232
+        }, 
+        {
+         "id":18,
+         "probability":0.025000000372529
+        }, 
+        {
+         "id":124,
+         "probability":0.00499999988824129
+        }, 
+        {
+         "id":334,
+         "type":"Player"
+        }, 
+        {
+         "id":344,
+         "type":"Item"
+        }, 
+        {
+         "id":345,
+         "type":"Item"
+        }, 
+        {
+         "id":346,
+         "type":"Item"
+        }, 
+        {
+         "id":347,
+         "type":"Item"
+        }, 
+        {
+         "id":348,
+         "type":"Item"
+        }, 
+        {
+         "id":349,
+         "type":"Item"
+        }, 
+        {
+         "id":350,
+         "type":"Item"
+        }, 
+        {
+         "id":360,
+         "type":"Item"
+        }, 
+        {
+         "id":361,
+         "type":"Item"
+        }, 
+        {
+         "id":362,
+         "type":"Item"
+        }, 
+        {
+         "id":363,
+         "type":"Item"
+        }, 
+        {
+         "id":364,
+         "type":"Item"
+        }, 
+        {
+         "id":365,
+         "type":"Item"
+        }, 
+        {
+         "id":366,
+         "type":"Item"
+        }, 
+        {
+         "id":376,
+         "type":"Item"
+        }, 
+        {
+         "id":377,
+         "type":"Item"
+        }, 
+        {
+         "id":378,
+         "type":"Item"
+        }, 
+        {
+         "id":379,
+         "type":"Item"
+        }, 
+        {
+         "id":380,
+         "type":"Item"
+        }, 
+        {
+         "id":381,
+         "type":"Item"
+        }, 
+        {
+         "id":382,
+         "type":"Item"
+        }, 
+        {
+         "id":424,
+         "type":"Item"
+        }, 
+        {
+         "id":425,
+         "type":"Item"
+        }, 
+        {
+         "id":426,
+         "type":"Item"
+        }, 
+        {
+         "id":427,
+         "type":"Item"
+        }],
  "tilewidth":8,
  "type":"tileset",
- "version":"1.6"
+ "version":"1.6",
+ "wangsets":[
+        {
+         "colors":[
+                {
+                 "color":"#0055ff",
+                 "name":"Water",
+                 "probability":1,
+                 "tile":-1
+                }, 
+                {
+                 "color":"#00ff00",
+                 "name":"Ground",
+                 "probability":1,
+                 "tile":-1
+                }],
+         "name":"Corners",
+         "tile":-1,
+         "type":"corner",
+         "wangtiles":[
+                {
+                 "tileid":2,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":3,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":4,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":5,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":6,
+                 "wangid":[0, 1, 0, 2, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":7,
+                 "wangid":[0, 1, 0, 2, 0, 2, 0, 1]
+                }, 
+                {
+                 "tileid":8,
+                 "wangid":[0, 1, 0, 1, 0, 2, 0, 1]
+                }, 
+                {
+                 "tileid":18,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":19,
+                 "wangid":[0, 2, 0, 1, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":20,
+                 "wangid":[0, 2, 0, 1, 0, 1, 0, 2]
+                }, 
+                {
+                 "tileid":21,
+                 "wangid":[0, 2, 0, 2, 0, 1, 0, 2]
+                }, 
+                {
+                 "tileid":22,
+                 "wangid":[0, 2, 0, 2, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":23,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":24,
+                 "wangid":[0, 1, 0, 1, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":26,
+                 "wangid":[0, 2, 0, 1, 0, 2, 0, 1]
+                }, 
+                {
+                 "tileid":27,
+                 "wangid":[0, 2, 0, 1, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":28,
+                 "wangid":[0, 2, 0, 2, 0, 1, 0, 2]
+                }, 
+                {
+                 "tileid":35,
+                 "wangid":[0, 1, 0, 1, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":36,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":37,
+                 "wangid":[0, 2, 0, 2, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":38,
+                 "wangid":[0, 2, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":39,
+                 "wangid":[0, 2, 0, 1, 0, 1, 0, 2]
+                }, 
+                {
+                 "tileid":40,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 2]
+                }, 
+                {
+                 "tileid":42,
+                 "wangid":[0, 1, 0, 2, 0, 1, 0, 2]
+                }, 
+                {
+                 "tileid":43,
+                 "wangid":[0, 1, 0, 2, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":44,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 1]
+                }, 
+                {
+                 "tileid":51,
+                 "wangid":[0, 1, 0, 2, 0, 2, 0, 2]
+                }, 
+                {
+                 "tileid":52,
+                 "wangid":[0, 1, 0, 2, 0, 2, 0, 1]
+                }, 
+                {
+                 "tileid":53,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 1]
+                }, 
+                {
+                 "tileid":124,
+                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                }]
+        }]
 }
