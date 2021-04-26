@@ -266,6 +266,12 @@
         }, 
         {
          "id":324,
+         "properties":[
+                {
+                 "name":"Power",
+                 "type":"int",
+                 "value":3
+                }],
          "type":"Player"
         }, 
         {
@@ -441,6 +447,10 @@
         {
          "id":427,
          "type":"Item"
+        }, 
+        {
+         "id":428,
+         "type":"Crate"
         }, 
         {
          "id":432,
