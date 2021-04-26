@@ -1,0 +1,303 @@
+{ "columns":32,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"prototype.json"
+        }
+    },
+ "image":"prototype.png",
+ "imageheight":256,
+ "imagewidth":256,
+ "margin":0,
+ "name":"Prototype",
+ "objectalignment":"center",
+ "spacing":0,
+ "tilecount":1024,
+ "tiledversion":"1.6.0",
+ "tileheight":8,
+ "tiles":[
+        {
+         "id":34,
+         "type":"Crate"
+        }, 
+        {
+         "id":64,
+         "properties":[
+                {
+                 "name":"Power",
+                 "type":"int",
+                 "value":3
+                }],
+         "type":"Player"
+        }, 
+        {
+         "id":160,
+         "type":"Item"
+        }, 
+        {
+         "id":192,
+         "type":"Item"
+        }, 
+        {
+         "id":224,
+         "type":"Item"
+        }, 
+        {
+         "id":225,
+         "type":"Item"
+        }],
+ "tilewidth":8,
+ "transformations":
+    {
+     "hflip":false,
+     "preferuntransformed":true,
+     "rotate":true,
+     "vflip":false
+    },
+ "type":"tileset",
+ "version":"1.6",
+ "wangsets":[
+        {
+         "colors":[
+                {
+                 "color":"#ff0000",
+                 "name":"Matter",
+                 "probability":1,
+                 "tile":100
+                }],
+         "name":"Terrains",
+         "tile":-1,
+         "type":"corner",
+         "wangtiles":[
+                {
+                 "tileid":1,
+                 "wangid":[0, 0, 0, 1, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":2,
+                 "wangid":[0, 0, 0, 1, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":3,
+                 "wangid":[0, 0, 0, 0, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":4,
+                 "wangid":[0, 1, 0, 0, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":5,
+                 "wangid":[0, 1, 0, 1, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":33,
+                 "wangid":[0, 1, 0, 1, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":34,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":35,
+                 "wangid":[0, 0, 0, 0, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":36,
+                 "wangid":[0, 0, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":37,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 0]
+                }, 
+                {
+                 "tileid":65,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":66,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":67,
+                 "wangid":[0, 0, 0, 0, 0, 0, 0, 1]
+                }]
+        }, 
+        {
+         "colors":[
+                {
+                 "color":"#ff0000",
+                 "name":"",
+                 "probability":1,
+                 "tile":-1
+                }],
+         "name":"Pipe",
+         "tile":-1,
+         "type":"edge",
+         "wangtiles":[
+                {
+                 "tileid":6,
+                 "wangid":[1, 0, 0, 0, 1, 0, 0, 0]
+                }, 
+                {
+                 "tileid":7,
+                 "wangid":[0, 0, 1, 0, 1, 0, 0, 0]
+                }, 
+                {
+                 "tileid":38,
+                 "wangid":[0, 0, 1, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":39,
+                 "wangid":[1, 0, 1, 0, 1, 0, 1, 0]
+                }, 
+                {
+                 "tileid":40,
+                 "wangid":[0, 0, 1, 0, 1, 0, 1, 0]
+                }]
+        }, 
+        {
+         "colors":[
+                {
+                 "color":"#ff0000",
+                 "name":"Solid",
+                 "probability":1,
+                 "tile":130
+                }, 
+                {
+                 "color":"#00ff00",
+                 "name":"White",
+                 "probability":1,
+                 "tile":133
+                }, 
+                {
+                 "color":"#0000ff",
+                 "name":"Pipe",
+                 "probability":1,
+                 "tile":39
+                }, 
+                {
+                 "color":"#ff7700",
+                 "name":"Orange",
+                 "probability":1,
+                 "tile":196
+                }],
+         "name":"Wall",
+         "tile":-1,
+         "type":"mixed",
+         "wangtiles":[
+                {
+                 "tileid":6,
+                 "wangid":[3, 0, 0, 0, 3, 0, 0, 0]
+                }, 
+                {
+                 "tileid":7,
+                 "wangid":[0, 0, 3, 0, 3, 0, 0, 0]
+                }, 
+                {
+                 "tileid":38,
+                 "wangid":[0, 0, 3, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":39,
+                 "wangid":[3, 0, 3, 0, 3, 0, 3, 0]
+                }, 
+                {
+                 "tileid":40,
+                 "wangid":[0, 0, 3, 0, 3, 0, 3, 0]
+                }, 
+                {
+                 "tileid":98,
+                 "wangid":[0, 1, 0, 1, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":99,
+                 "wangid":[0, 1, 0, 1, 0, 1, 0, 1]
+                }, 
+                {
+                 "tileid":100,
+                 "wangid":[0, 0, 2, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":101,
+                 "wangid":[0, 0, 0, 0, 2, 0, 2, 0]
+                }, 
+                {
+                 "tileid":102,
+                 "wangid":[2, 0, 0, 0, 2, 0, 0, 0]
+                }, 
+                {
+                 "tileid":103,
+                 "wangid":[3, 0, 0, 0, 2, 0, 0, 0]
+                }, 
+                {
+                 "tileid":104,
+                 "wangid":[0, 0, 3, 0, 3, 0, 2, 0]
+                }, 
+                {
+                 "tileid":105,
+                 "wangid":[2, 0, 3, 0, 3, 0, 3, 0]
+                }, 
+                {
+                 "tileid":106,
+                 "wangid":[3, 0, 2, 0, 3, 0, 2, 0]
+                }, 
+                {
+                 "tileid":107,
+                 "wangid":[3, 0, 0, 0, 3, 0, 2, 0]
+                }, 
+                {
+                 "tileid":130,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":131,
+                 "wangid":[0, 1, 0, 0, 0, 0, 0, 1]
+                }, 
+                {
+                 "tileid":133,
+                 "wangid":[2, 0, 2, 0, 2, 0, 2, 0]
+                }, 
+                {
+                 "tileid":134,
+                 "wangid":[2, 0, 0, 0, 2, 0, 2, 0]
+                }, 
+                {
+                 "tileid":136,
+                 "wangid":[0, 0, 2, 0, 2, 0, 3, 0]
+                }, 
+                {
+                 "tileid":137,
+                 "wangid":[3, 0, 2, 0, 2, 0, 2, 0]
+                }, 
+                {
+                 "tileid":138,
+                 "wangid":[2, 0, 3, 0, 2, 0, 3, 0]
+                }, 
+                {
+                 "tileid":139,
+                 "wangid":[2, 0, 0, 0, 2, 0, 3, 0]
+                }, 
+                {
+                 "tileid":165,
+                 "wangid":[0, 0, 0, 0, 4, 0, 0, 0]
+                }, 
+                {
+                 "tileid":166,
+                 "wangid":[4, 0, 0, 0, 4, 0, 0, 0]
+                }, 
+                {
+                 "tileid":196,
+                 "wangid":[4, 0, 4, 0, 0, 0, 0, 0]
+                }, 
+                {
+                 "tileid":197,
+                 "wangid":[4, 0, 4, 0, 4, 0, 4, 0]
+                }, 
+                {
+                 "tileid":198,
+                 "wangid":[4, 0, 0, 0, 4, 0, 4, 0]
+                }]
+        }]
+}
