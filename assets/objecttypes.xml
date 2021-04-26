@@ -3,8 +3,17 @@
  <objecttype name="Crate" color="#ff5500">
   <property name="Weight" type="int" default="1"/>
  </objecttype>
- <objecttype name="Item" color="#ffaaff"/>
+ <objecttype name="Item" color="#ffaaff">
+  <property name="Weight" type="int" default="1"/>
+ </objecttype>
+ <objecttype name="NPC" color="#a0a0a4">
+  <property name="NPCID" type="string"/>
+ </objecttype>
  <objecttype name="Player" color="#ff00ff">
   <property name="Power" type="int" default="1"/>
+ </objecttype>
+ <objecttype name="Solid" color="#000000"/>
+ <objecttype name="StaticDialog" color="#a0a0a4">
+  <property name="DialogID" type="string"/>
  </objecttype>
 </objecttypes>

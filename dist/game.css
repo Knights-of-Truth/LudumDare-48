@@ -16,9 +16,31 @@
   background: var(--black);
   border: 5px solid var(--white);
   color: var(--white);
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 700;
   font-family: "LIKO-12";
+  white-space: pre-wrap;
+  transition: opacity 160ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.dialog.closed {
+  opacity: 0;
+  pointer-events: none;
+  transition-duration: 80ms;
+}
+.dialog .red {
+  color: #ff004d;
+}
+.dialog .green {
+  color: #5dbb4d;
+}
+.dialog .yellow {
+  color: #ffec27;
+}
+.dialog .pink {
+  color: #f176a6;
+}
+.dialog .blue {
+  color: #29adff;
 }
 
 .inventory {
