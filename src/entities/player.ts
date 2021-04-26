@@ -13,10 +13,6 @@ export default class Player extends Entity {
 
     constructor(tile: Tile) {
         super(tile);
-
-        this.inventory.addItem(98);
-        this.inventory.addItem(35);
-        this.inventory.addItem(129);
     }
 
     get power() {
