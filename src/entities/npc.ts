@@ -16,15 +16,18 @@ export default class NPC extends Entity implements Consumable {
     consume(player: player): void {
         if (this.npcId === 'maanex') {
             switch (this.logicState) {
-                case 0:
-                    player.dialog.open('maanex_01');
-                    this.logicState++;
+                case 0: {
+                    const gotCoin = player.inventory.removeItem(348);
+                    player.dialog.open(gotCoin ? 'maanex_04' : 'maanex_01');
+                    this.logicState = gotCoin ? 2 : 1;
                     break;
-                case 1:
+                }
+                case 1: {
                     const gotCoin = player.inventory.removeItem(348);
                     player.dialog.open(gotCoin ? 'maanex_03' : 'maanex_02');
                     if (gotCoin) this.logicState++;
                     break;
+                }
                 default:
                     player.dialog.open('maanex_00');
             }
