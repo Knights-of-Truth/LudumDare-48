@@ -167,6 +167,13 @@ export default class Map extends PIXI.Container {
                     if (layer.tiles[x][y].tileId !== 0)
                         this.solidTiles[x][y] = true;
         }
+
+        // Scan for tiles with type 'Solid'.
+        for (const layer of layers)
+            for (let x = 0; x < mapWidth; x++)
+                for (let y = 0; y < mapHeight; y++)
+                    if (this.tilesMetadata[layer.tiles[x][y].tileId]?.type === 'Solid')
+                        this.solidTiles[x][y] = true;
     }
 
     /**
