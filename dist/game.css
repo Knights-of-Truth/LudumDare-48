@@ -30,6 +30,11 @@
 .dialog .red {
   color: #ff004d;
 }
+.dialog .glitch {
+  transform: rotate(180deg) translate(0, 5px);
+  display: inline-block;
+  color: #c42430;
+}
 .dialog .green {
   color: #5dbb4d;
 }
