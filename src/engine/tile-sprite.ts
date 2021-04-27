@@ -25,6 +25,16 @@ export default class TileSprite extends PIXI.Sprite {
 
         this.anchor.set(0.5, 0.5);
         this.rawTileId = rawTileId;
+
+        // TODO: Remove hardcoded animation
+        if (this.tileId === 412) {
+            const rotationLoop = () => {
+                this.angle -= 100;
+                requestAnimationFrame(rotationLoop);
+            };
+
+            requestAnimationFrame(rotationLoop);
+        }
     }
 
     get tileId() { return this._tileId }

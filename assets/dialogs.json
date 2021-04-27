@@ -1,15 +1,53 @@
 {
     "home": "<i>It's still early to go back home...</i>",
-    "house": [
-        "Hello there!",
-        "This is a multi-stage dialog",
-        "Emojis do work here 🤔",
-        "Multi\nlines too, with\n   whitespace"
+    "house_maanex": "<i>Maanex's house</i>",
+    "house_john": "<i>John's house</i>",
+    "house_gobbo": "<i>-The house of the deleted gobbo-</i>",
+    "shop": "<i>-There could have been a shop-</i>",
+    "blue_house": [
+        "It's nice to see you still here!",
+        "You can follow me <span class='blue'>@rami_sab07</span> on Twitter if you like to :)"
     ],
+    "castle": [
+        "Huge thanks to my friends, <span class='yellow'>Redwan</span> and <span class='yellow'>Iyad</span> for trying to help me with the jam!"
+    ],
+    "farm": "@#$@#%_)(! <span class='glitch'>The \"GLITCH\" ahead</span>\nKeep going to the right",
+    "light_house": [
+        "We had multiple games ideas fitting the game's theme",
+        "One which involved multiple deaths levels,\nAnd another which had some inception like concepts",
+        "Might try fiddling around with them post-jam!"
+    ],
+
+    "sign_01": [
+        "<span class='blue'>\"The Village\"</span>\n\n Farm ---->"
+    ],
+
+    "sign_02": "Interact with the glitch please ^",
+
+    "john_01": [
+        "Did you know that you can open the inventory with <span class='blue'>E</span>?",
+        "Anyway, I was supposed to give you some quest,\n But I forgot what I wanted"
+    ],
+
+    "duck_01": [
+        "Quack, quack quack quack quack,\nquaaaaack quack,\nquackkkkk.. :("
+    ],
+
+    "glitch_01": [
+        "Welcome dear player",
+        "Thanks for taking the time and visiting this unfinished LudumDare 42 entry :)",
+        "Well, unfortunatly we didn't prepare for the jam properly,\n",
+        "We had no existing game code, it took us ~40 hours to implement the player movement and inventory",
+        "And other ~16 hours learning how to do some map editing with Tiled",
+        "We hope we can do better at the next time ;)",
+        "<i style='font-size: 10px'>Meanwhile you can play around with the boxes and check some written dialogs....</i>",
+        "Or just close this tab and try some other cool entries!"
+    ],
+
     "maanex_01": [
         "Hey you, I'm <span class='yellow'>Mr.Yellow</span> guy",
-        "I like <span color='yellow'>coins</span>!<br/><i>actually,</i> I <b class='pink'>LOVE</b> them!",
-        "Well, I've lost a <span class='yellow'>coin</span> around...",
+        "I like collecting <span color='yellow'>coins</span>.\n<i>actually,</i> I <b class='pink'>LOVE</b> them!",
+        "However there's still <span class='yellow'>1 coin</span> missing from my collection...",
         "Can you <span class='blue'>find the</span> <span class='yellow'>coin</span> for me please?"
     ],
     "maanex_02": [
@@ -20,8 +58,9 @@
         "Thanks you so much <3"
     ],
     "maanex_04": [
-        "<i>How did you know I was searching for the coin?</i>",
-        "Thanks you anyway ^_^"
+        "<i>Who told you I want the coin?</i>",
+        "YOU THINK ALL WHAT I WANT IS COINS????",
+        "<i>You're right</i>, thanks for the coin and have a nice day <3"
     ],
     "maanex_00": [
         "<b class='red'>GET AWAY OF MY COINS</b>"

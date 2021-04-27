@@ -1,11 +1,11 @@
 { "columns":16,
  "image":"merged.png",
- "imageheight":240,
+ "imageheight":296,
  "imagewidth":128,
  "margin":0,
  "name":"LudumDare",
  "spacing":0,
- "tilecount":480,
+ "tilecount":592,
  "tiledversion":"1.6.0",
  "tileheight":8,
  "tiles":[
@@ -103,7 +103,7 @@
         }, 
         {
          "id":80,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":93,
@@ -115,15 +115,15 @@
         }, 
         {
          "id":96,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":112,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":118,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":124,
@@ -135,11 +135,11 @@
         }, 
         {
          "id":128,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":134,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":140,
@@ -160,11 +160,11 @@
         }, 
         {
          "id":160,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":166,
-         "probability":0
+         "probability":0.699999988079071
         }, 
         {
          "id":263,
@@ -379,26 +379,28 @@
          "type":"Solid"
         }, 
         {
-         "id":388,
-         "properties":[
-                {
-                 "name":"DialogID",
-                 "type":"string",
-                 "value":"house"
-                }],
-         "type":"StaticDialog"
-        }, 
-        {
          "id":389,
          "type":"Solid"
         }, 
         {
          "id":390,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"home"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":391,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"house_john"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":392,
@@ -411,16 +413,88 @@
          "type":"NPC"
         }, 
         {
+         "id":393,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"john"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":394,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"boxy"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":395,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"snake"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":396,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"coolguy"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":397,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"ninja"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":398,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"kid"
+                }],
+         "type":"NPC"
+        }, 
+        {
          "id":400,
          "type":"Solid"
         }, 
         {
          "id":401,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"house_gobbo"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":402,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"house_maanex"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":403,
@@ -428,19 +502,93 @@
         }, 
         {
          "id":404,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"shop"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":405,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"shop"
+                }],
+         "type":"StaticDialog"
         }, 
         {
-         "id":406,
-         "type":"Solid"
+         "id":408,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"duck"
+                }],
+         "type":"NPC"
         }, 
         {
-         "id":407,
-         "type":"Solid"
+         "id":409,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"fighter"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":410,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"tweety"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":411,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"glitch"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":412,
+         "properties":[
+                {
+                 "name":"NPCID",
+                 "type":"string",
+                 "value":"gobbo"
+                }],
+         "type":"NPC"
+        }, 
+        {
+         "id":413,
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"sign_01"
+                }],
+         "type":"StaticDialog"
+        }, 
+        {
+         "id":414,
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"sign_02"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":424,
@@ -484,7 +632,7 @@
                 {
                  "name":"DialogID",
                  "type":"string",
-                 "value":"home"
+                 "value":"farm"
                 }],
          "type":"StaticDialog"
         }, 
@@ -494,17 +642,29 @@
                 {
                  "name":"DialogID",
                  "type":"string",
-                 "value":"home"
+                 "value":"farm"
                 }],
          "type":"StaticDialog"
         }, 
         {
          "id":438,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"blue_house"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":439,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"blue_house"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":464,
@@ -516,11 +676,23 @@
         }, 
         {
          "id":466,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"light_house"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":467,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"light_house"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":468,
@@ -532,11 +704,23 @@
         }, 
         {
          "id":470,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"castle"
+                }],
+         "type":"StaticDialog"
         }, 
         {
          "id":471,
-         "type":"Solid"
+         "properties":[
+                {
+                 "name":"DialogID",
+                 "type":"string",
+                 "value":"castle"
+                }],
+         "type":"StaticDialog"
         }],
  "tilewidth":8,
  "type":"tileset",
@@ -758,7 +942,7 @@
                 }, 
                 {
                  "tileid":64,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":65,
@@ -814,7 +998,7 @@
                 }, 
                 {
                  "tileid":80,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":81,
@@ -870,7 +1054,7 @@
                 }, 
                 {
                  "tileid":96,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":97,
@@ -918,7 +1102,7 @@
                 }, 
                 {
                  "tileid":112,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":113,
@@ -942,7 +1126,7 @@
                 }, 
                 {
                  "tileid":118,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":119,
@@ -982,7 +1166,7 @@
                 }, 
                 {
                  "tileid":128,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":129,
@@ -1006,7 +1190,7 @@
                 }, 
                 {
                  "tileid":134,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":135,
@@ -1094,7 +1278,7 @@
                 }, 
                 {
                  "tileid":160,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":161,
@@ -1118,7 +1302,7 @@
                 }, 
                 {
                  "tileid":166,
-                 "wangid":[0, 2, 0, 2, 0, 2, 0, 2]
+                 "wangid":[0, 5, 0, 5, 0, 5, 0, 5]
                 }, 
                 {
                  "tileid":167,

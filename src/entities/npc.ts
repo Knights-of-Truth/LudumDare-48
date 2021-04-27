@@ -32,5 +32,32 @@ export default class NPC extends Entity implements Consumable {
                     player.dialog.open('maanex_00');
             }
         }
+
+        if (this.npcId === 'john') {
+            switch (this.logicState) {
+                case 0: {
+                    player.dialog.open('john_01');
+                    break;
+                }
+            }
+        }
+
+        if (this.npcId === 'duck') {
+            switch (this.logicState) {
+                case 0: {
+                    player.dialog.open('duck_01');
+                    break;
+                }
+            }
+        }
+
+        if (this.npcId === 'glitch') {
+            switch (this.logicState) {
+                case 0: {
+                    player.dialog.open('glitch_01');
+                    break;
+                }
+            }
+        }
     }
 }

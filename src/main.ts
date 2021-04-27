@@ -23,9 +23,8 @@ async function main() {
     const game = new Game(resources);
     stage.addChild(game.stage);
 
-    game.stage.scale.set(4);
-
     function centerMapStage() {
+        game.stage.scale.set(app.screen.width / 256);
         game.stage.position.set(
             Math.floor(app.screen.width / 2),
             Math.floor(app.screen.height / 2)

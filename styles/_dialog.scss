@@ -37,6 +37,12 @@
         color: #ff004d;
     }
 
+    .glitch {
+        transform: rotate(180deg) translate(0, 5px);
+        display: inline-block;
+        color: #c42430;
+    }
+
     .green {
         color: #5dbb4d;
     }
